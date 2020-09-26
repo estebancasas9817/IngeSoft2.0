@@ -46,8 +46,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/correoLogin"
-            android:hint="@string/Mail"
+            android:id="@+id/usuarioLogin"
+            android:hint="@string/Usuario"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText

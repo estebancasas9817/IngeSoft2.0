@@ -12,112 +12,231 @@
     <!--DISEÑO DEL LOGO-->
 
     <!--DISEÑO TIPOGRAFIA H1-->
-
-    <ImageView
-        android:id="@+id/img_logo"
-        android:layout_width="150dp"
-        android:layout_height="200dp"
-        android:contentDescription="@string/Logo"
-        android:src="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/h1Registro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Bienvenido"
-        android:fontFamily="@font/sweet_fig"
-        android:textSize="12sp"
-        android:textColor="#000"
-        android:layout_marginTop="-20dp"/>
-
-    <!--DISEÑO TIPOGRAFIA H2-->
-    <TextView
-        android:id="@+id/h2Registro"
-        android:layout_width="381dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/always_in_my_heart"
-        android:text="@string/Registrarse"
-        android:textSize="30sp" />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp">
-
-
-        <!--DISEÑO FORMULARIO-->
-        <!--NOMBRE COMPLETO-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nombreRegistro"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/Nombre"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:contentDescription="@string/Logo"
+                android:src="@drawable/logo" />
 
-            <com.google.android.material.textfield.TextInputEditText
+            <TextView
+                android:id="@+id/h1Registro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Bienvenido"
+                android:fontFamily="@font/sweet_fig"
+                android:textSize="12sp"
+                android:textColor="#000"
+                android:layout_marginTop="-20dp"/>
+
+            <!--DISEÑO TIPOGRAFIA H2-->
+            <TextView
+                android:id="@+id/h2Registro"
+                android:layout_width="381dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/always_in_my_heart"
+                android:text="@string/Registrarse"
+                android:textSize="30sp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text">
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
 
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <!--EMAIL-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/Mail"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <!--DISEÑO FORMULARIO-->
+                <!--NOMBRE COMPLETO-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/usuarioRegistro"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Usuario">
 
-            <com.google.android.material.textfield.TextInputEditText
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/nombreRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/Nombre"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--EMAIL-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/Mail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <!--CONTRASEÑA-->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/claveRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/clave"
+                    app:passwordToggleEnabled="true"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- RADIO BUTTOM GENERO -->
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Genero:"
+                            android:textSize="23sp"/>
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/radioM"
+                            android:text="Masculino"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="15dp"/>
+
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/radioF"
+                            android:text="Femenino"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="10dp"/>
+
+                    </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Edad"
+                    android:inputType="number"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/estatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Estatura(m)"
+                    android:inputType="numberDecimal"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/peso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Peso(kg)"
+                    android:inputType="numberDecimal"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--FIN FORMULARIO-->
+            </LinearLayout>
+
+            <!--BOTON REGISTRARSE-->
+            <Button
+                android:id="@+id/btnRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress">
+                android:text="@string/btnRegistro"
+                android:background="#000"
+                android:textColor="#fff"/>
+            <!-- FIN  BOTON REGISTRARSE-->
 
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
 
-        <!--CONTRASEÑA-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/claveRegistro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/clave"
-            app:passwordToggleEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <!--BOTON INICIAR SESIÓN-->
+            <Button
+                android:id="@+id/btnPantallaLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword">
-
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-        <!--FIN FORMULARIO-->
-    </LinearLayout>
-
-    <!--BOTON REGISTRARSE-->
-    <Button
-        android:id="@+id/btnRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnRegistro"
-        android:background="#000"
-        android:textColor="#fff"/>
-    <!-- FIN  BOTON REGISTRARSE-->
+                android:text="@string/btnCuenta"
+                android:background="#fff"
+                />
+        </LinearLayout>
+    </ScrollView>
 
 
-    <!--BOTON INICIAR SESIÓN-->
-    <Button
-        android:id="@+id/btnPantallaLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnCuenta"
-        android:background="#fff"
-        />
     <!--FIN BOTON INICIAR SESION-->
 </LinearLayout>
 
