@@ -83,7 +83,7 @@ public class Login extends AppCompatActivity {
 
                                 Toast.makeText(Login.this,"Bienvenido de vuelta",Toast.LENGTH_SHORT).show();
 
-                                Intent sig = new Intent(Login.this,Ejemplo.class);
+                                Intent sig = new Intent(Login.this,HomeActivity.class);
                                 //Guardar el usuario para mostrar los datos de ese usuario en otra pantalla y solo los de ese usuario
                                 sig.putExtra("usuario",usuarioBD);
                                 sig.putExtra("email",emailDB);
@@ -134,16 +134,6 @@ public class Login extends AppCompatActivity {
         });
 
     }
-
-
-
-
-
-
-
-
-
-
 }
 
 

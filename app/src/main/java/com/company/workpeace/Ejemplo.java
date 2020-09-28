@@ -62,32 +62,8 @@ public class Ejemplo extends AppCompatActivity {
                 Intent a = new Intent(Ejemplo.this,Exercise.class);
                 a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(a);
-
             }
         });
-
-
-        btnPerfil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent si = new Intent(Ejemplo.this,Perfil.class);
-                // PASAR INFO ENTRE ACTIVIDADES
-                si.putExtra("usuario",usuario);
-                si.putExtra("nombre",nombre);
-                si.putExtra("clave",clave);
-                si.putExtra("email",correo);
-                startActivity(si);
-            }
-        });
-
-
-
-
-
-
-
-
-
     }
 
 
