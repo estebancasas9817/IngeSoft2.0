@@ -9,13 +9,17 @@
 
     <ScrollView
         android:id="@+id/scrollView11"
-        android:layout_width="361dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:layout_marginBottom="59dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/subintropage"
-        app:layout_constraintStart_toEndOf="@+id/subintropage"
-        app:layout_constraintTop_toBottomOf="@+id/subintropage">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divpage">
 
         <LinearLayout
             android:layout_width="361dp"
@@ -311,47 +315,17 @@
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/intropage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="6dp"
-        android:lineSpacingExtra="8dp"
-        android:text="Introduction"
-        android:textColor="#000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/subintropage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divpage" />
-
-    <TextView
-        android:id="@+id/subintropage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:lineSpacingExtra="5dp"
-        android:text="ACA NO SE QUE PONER..."
-        android:textColor="#3A3A3A"
-        android:textSize="16sp"
-        app:fontFamily="sans-serif"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView11"
-        app:layout_constraintStart_toStartOf="@+id/intropage"
-        app:layout_constraintTop_toBottomOf="@+id/intropage" />
-
     <View
         android:id="@+id/divpage"
-        android:layout_width="346dp"
-        android:layout_height="7dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="18dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="15dp"
         android:background="#25293E"
-        app:layout_constraintBottom_toTopOf="@+id/intropage"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtitlepage" />
@@ -362,7 +336,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
         android:lineSpacingExtra="8dp"
-        android:text="Ejercicios para ganar masa muscular"
+        android:text="Selecciona la rutina que deseas iniciar"
         android:textColor="#3A3A3A"
         android:textSize="17sp"
         app:fontFamily="sans-serif"
@@ -379,7 +353,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="6dp"
         android:lineSpacingExtra="8dp"
-        android:text="Workouts"
+        android:text="Rutinas"
         android:textColor="#000"
         android:textSize="28sp"
         app:layout_constraintBottom_toTopOf="@+id/subtitlepage"
