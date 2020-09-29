@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         ejerciciosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent si = new Intent(HomeActivity.this,Ejemplo.class);
+                Intent si = new Intent(HomeActivity.this,EjerciciosActivity.class);
                 // PASAR INFO ENTRE ACTIVIDADES
                 si.putExtra("usuario",usuario);
                 si.putExtra("nombre",nombre);
