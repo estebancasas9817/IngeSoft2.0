@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#FFFCE3">
+    tools:context=".ClasesPrincipales.MainActivity"
+    android:background="#ffae00">
 
     <ImageView
         android:id="@+id/img_logo"
         android:layout_width="430dp"
         android:layout_height="448dp"
         android:contentDescription="@string/Logo"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo_amarillo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.526"
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="@string/InTech"
         android:textSize="25sp"
+        android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

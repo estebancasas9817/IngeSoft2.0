@@ -1,38 +1,402 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Probando"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:background="#ffae00"
+    tools:context=".ClasesPrincipales.Probando">
 
-    <!--DISEÑO DEL LOGO-->
-    
+    <TextView
+        android:id="@+id/titlepage2"
+        android:layout_width="362dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="20dp"
+        android:lineSpacingExtra="8dp"
+        android:text="Actualización de medidas y masa corporal"
+        android:textAllCaps="true"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
+        android:id="@+id/btnActualizar"
+        android:background="#000"
+        android:textColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:id="@+id/btnEjemplo"
-        android:text="Act"/>
+        android:layout_marginBottom="17dp"
+        android:text="Actualizar datos"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/AAAAA"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnNoseMedidas"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Probando">
+        android:layout_marginBottom="17dp"
+        android:text="COMO TOMAR MEDIDAS"
+        android:background="#ffae00"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/btnActualizar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
 
-        <com.google.android.material.textfield.TextInputEditText
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnActualizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titlepage2">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp" />
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="11dp"
+            tools:layout_editor_absoluteY="124dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <LinearLayout
+                android:id="@+id/peso"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="495dp">
 
+                <ImageView
+                    android:layout_width="108dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_de_cuello"
+                    tools:srcCompat="@drawable/logo" />
 
+                <LinearLayout
+                    android:layout_width="262dp"
+                    android:layout_height="59dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/pechoTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Actualización de peso(kg)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
 
+                    <EditText
+                        android:id="@+id/pesoText"
+                        android:layout_width="232dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
 
+                </LinearLayout>
 
-</LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/medidasCuello"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="495dp">
+
+                <ImageView
+                    android:layout_width="108dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_de_cuello" />
+
+                <LinearLayout
+                    android:layout_width="262dp"
+                    android:layout_height="59dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/medidasCuelloTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medida de cuello(cm)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/cuelloText"
+                        android:layout_width="235dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/medidasCintura"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="495dp">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_cintura" />
+
+                <LinearLayout
+                    android:layout_width="262dp"
+                    android:layout_height="59dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/medidasCinturatitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medida de cintura(cm)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/cinturaText"
+                        android:layout_width="234dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fitone"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="16dp">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_antebrazo" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fitonetitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medida de antebrazo(cm)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/antebrazoText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fittwo"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="109dp">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_hombros" />
+
+                <LinearLayout
+                    android:layout_width="272dp"
+                    android:layout_height="67dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fittwotitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medida de hombros(cm)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/hombrosText"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fitthree"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="405dp">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_muslo" />
+
+                <LinearLayout
+                    android:layout_width="253dp"
+                    android:layout_height="62dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fitthreetitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medida de muslo(cm)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/musloTexto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fitfour"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="495dp">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_pantorrilla" />
+
+                <LinearLayout
+                    android:layout_width="265dp"
+                    android:layout_height="66dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fitfourtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medida de pantorrilla(cm)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/pantorrillaText"
+                        android:layout_width="236dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fitfive"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="24dp"
+                tools:layout_editor_absoluteY="495dp">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medida_pecho" />
+
+                <LinearLayout
+                    android:layout_width="262dp"
+                    android:layout_height="59dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/fitfivetitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medida de pecho (cm)"
+                        android:textColor="#000000"
+                        android:textSize="17sp" />
+
+                    <EditText
+                        android:id="@+id/pechoText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="numberDecimal" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

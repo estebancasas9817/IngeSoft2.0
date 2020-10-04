@@ -1,4 +1,4 @@
-package com.company.workpeace;
+package com.company.workpeace.ClasesAuxiliares.Firebase;
 
 public class UsuariosAux {
     String usuario, nombre, email, clave,genero;

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0000ff"
-    tools:context=".ClasesPrincipales.Ejemplo">
+    tools:context=".ClasesPrincipales.EjercicioYoga">
 
     <LinearLayout
-        android:id="@+id/ejerciciosPrincipiantes"
+        android:id="@+id/linearLayoutYoga"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,15 +34,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/nombreEjercicio1"
+                android:id="@+id/nombreEjerYoga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NOMBRE DEL EJERCICIO"
+                android:text="NOMBRE DEL EJERCICIO DE YOGA"
                 android:textColor="#000000"
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/seriesEjercicio1"
+                android:id="@+id/seriesEjerYoga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -56,32 +56,32 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/descripcionEjercicio1"
+        android:id="@+id/descEjerYoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginStart="24dp"
         android:lineSpacingExtra="8dp"
-        android:text="DESCRIPCION DEL EJERCICIO"
+        android:text="DESCRIPCION DEL EJERCICIO DE YOGA"
         android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ejerciciosPrincipiantes"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutYoga"
         android:layout_marginLeft="24dp" />
 
     <TextView
-        android:id="@+id/subDescEjer1"
+        android:id="@+id/subDescEjerYoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="6dp"
         android:lineSpacingExtra="5dp"
-        android:text="ACA VA ALGUNA DESCPRICION \DEL EJERCICIO."
+        android:text="ACA VA ALGUNA DESCPRICION \DEL EJERCICIO \nDE YOGA."
         android:textColor="#3A3A3A"
         android:textSize="16sp"
         app:fontFamily="sans-serif"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripcionEjercicio1"
+        app:layout_constraintTop_toBottomOf="@+id/descEjerYoga"
         android:layout_marginLeft="24dp" />
 
     <View
@@ -94,11 +94,11 @@
         android:background="#25293E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subDescEjer1"
+        app:layout_constraintTop_toBottomOf="@id/subDescEjerYoga"
         />
 
     <TextView
-        android:id="@+id/timerValue"
+        android:id="@+id/timerYoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -136,14 +136,14 @@
         />
 
     <TextView
-        android:id="@+id/btnSeguirRutina1"
+        android:id="@+id/btnSeguiRutinaYoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:gravity="center"
-        android:text="CONTINUE WORKOUT"
+        android:text="CONTINUAR RUTINA DE YOGA"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="16sp"

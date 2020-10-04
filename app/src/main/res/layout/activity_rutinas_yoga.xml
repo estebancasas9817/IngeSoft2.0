@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffae00"
-    tools:context=".ClasesPrincipales.Exercise">
+    tools:context=".ClasesPrincipales.RutinasYoga">
 
     <TextView
-        android:id="@+id/titlepage"
+        android:id="@+id/nombreRutinaYoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:lineSpacingExtra="8dp"
-        android:text="NOMBRE DE LA RUTINA DE FITNESS"
+        android:text="NOMBRE DE LA RUTINA DE YOGA"
         android:textColor="#000"
         android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,12 +28,12 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         android:lineSpacingExtra="8dp"
-        android:text="Ejercicios de pecho para ganar Masa muscular"
+        android:text="PONER ALGO ACA"
         android:textColor="#3A3A3A"
         android:textSize="17sp"
         app:fontFamily="sans-serif"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlepage"
+        app:layout_constraintTop_toBottomOf="@+id/nombreRutinaYoga"
         android:layout_marginLeft="24dp" />
 
     <View
@@ -106,15 +106,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ejer1"
+                    android:id="@+id/ejerYoga1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Flexiones"
+                    android:text="Nombre Pose 1"
                     android:textColor="#000000"
                     android:textSize="17sp" />
 
                 <TextView
-                    android:id="@+id/fitonedesc"
+                    android:id="@+id/ejerDescYoga1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -153,15 +153,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ejer2"
+                    android:id="@+id/ejerYOGA2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aperturas de pecho"
+                    android:text="Nombre Pose 1"
                     android:textColor="#000000"
                     android:textSize="17sp" />
 
                 <TextView
-                    android:id="@+id/fittwodesc"
+                    android:id="@+id/descYoga2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -200,15 +200,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ejer3"
+                    android:id="@+id/ejerYOGA3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Flexiones espartanas"
+                    android:text="Nombre Pose 1"
                     android:textColor="#000000"
                     android:textSize="17sp" />
 
                 <TextView
-                    android:id="@+id/fitthreedesc"
+                    android:id="@+id/descYoga3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -247,15 +247,15 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ejer4"
+                    android:id="@+id/ejerYOGA4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Flexiones Diamante"
+                    android:text="Nombre Pose 1"
                     android:textColor="#000000"
                     android:textSize="17sp" />
 
                 <TextView
-                    android:id="@+id/fitfourdesc"
+                    android:id="@+id/descYoga4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -266,6 +266,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

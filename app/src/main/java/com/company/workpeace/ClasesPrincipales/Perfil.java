@@ -1,4 +1,4 @@
-package com.company.workpeace;
+package com.company.workpeace.ClasesPrincipales;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.company.workpeace.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -17,6 +19,8 @@ public class Perfil extends AppCompatActivity {
     TextInputLayout fullName, email,password;
     TextView fullNameLabel, usernameLabel;
     Button btnAct;
+
+    ImageView btn;
 
     String _USERNAME, _NAME, _EMAIL,_PASSWORD;
 
@@ -35,16 +39,21 @@ public class Perfil extends AppCompatActivity {
         btnAct = findViewById(R.id.btnActualizar);
 
 
+
+
         showAllUserData();
+
 
 
         btnAct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Perfil.this,Probando.class);
-                i.putExtra("usuario",_USERNAME);
-                i.putExtra("nombre",_NAME);
-                startActivity(i);
+                if (isNameChanged() || isPasswordChanged()) {
+                    Toast.makeText(Perfil.this,"Los datos se han actualizado satisfactoriamente",Toast.LENGTH_LONG).show();
+
+                }
+                else Toast.makeText(Perfil.this, "Los datos son los mismos, no se pudieron actualizar ", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -67,17 +76,6 @@ public class Perfil extends AppCompatActivity {
         email.getEditText().setText(_EMAIL);
         password.getEditText().setText(_PASSWORD);
     }
-
-
-    public void update(View view) {
-
-        if (isNameChanged() || isPasswordChanged()) {
-            Toast.makeText(this, "Data has been updated", Toast.LENGTH_LONG).show();
-        }
-        else Toast.makeText(this, "Data is same and can not be updated", Toast.LENGTH_LONG).show();
-
-    }
-
     private boolean isPasswordChanged() {
         if (!_PASSWORD.equals(password.getEditText().getText().toString())) {
             reference.child(_USERNAME).child("clave").setValue(password.getEditText().getText().toString());

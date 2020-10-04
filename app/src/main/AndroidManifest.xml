@@ -11,17 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".YogaActivity"></activity>
-        <activity android:name=".AbdomenPrincipiante" />
-        <activity android:name=".EjerciciosActivity" />
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".Exercise" />
-        <activity android:name=".Ejemplo" />
-        <activity android:name=".Probando" />
-        <activity android:name=".Perfil" />
-        <activity android:name=".Login" />
-        <activity android:name=".Registro" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ClasesPrincipales.RutinasPersonalizadas"></activity>
+        <activity android:name=".ClasesPrincipales.EjercicioMed" />
+        <activity android:name=".ClasesPrincipales.PantallaMeditacion" />
+        <activity android:name=".ClasesPrincipales.EjercicioYoga" />
+        <activity android:name=".ClasesPrincipales.RutinasYoga" />
+        <activity android:name=".ClasesPrincipales.Yoga" />
+        <activity android:name=".ClasesPrincipales.Init" />
+        <activity android:name=".ClasesPrincipales.Exercise" />
+        <activity android:name=".ClasesPrincipales.Ejemplo" />
+        <activity android:name=".ClasesPrincipales.Probando" />
+        <activity android:name=".ClasesPrincipales.Perfil" />
+        <activity android:name=".ClasesPrincipales.Login" />
+        <activity android:name=".ClasesPrincipales.Registro" />
+        <activity android:name=".ClasesPrincipales.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

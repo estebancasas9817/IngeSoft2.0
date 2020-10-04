@@ -1,4 +1,4 @@
-package com.company.workpeace;
+package com.company.workpeace.ClasesPrincipales;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.company.workpeace.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +25,7 @@ public class Login extends AppCompatActivity {
     Button btnRegistro;
     Button btnIniciarSesion;
     DatabaseReference referencia;
+    ProgressBar progressBar;
 
 
 
@@ -29,7 +33,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         btnRegistro = findViewById(R.id.btnPantallaRegistro);
         btnIniciarSesion = findViewById(R.id.btnIniciarSesionLogin);
         usuario = findViewById(R.id.usuarioLogin);
@@ -38,6 +43,8 @@ public class Login extends AppCompatActivity {
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressBar.setVisibility(View.VISIBLE);
 
                 // PASAR LAS VARIABLES A SU CORRESPONDIENTE TIPO DE DATOS
                 final String usuarioIngreso = usuario.getEditText().getText().toString().trim();
@@ -80,20 +87,28 @@ public class Login extends AppCompatActivity {
                                 String usuarioBD = dataSnapshot.child(usuarioIngreso).child("usuario").getValue(String.class);
                                 String emailDB = dataSnapshot.child(usuarioIngreso).child("email").getValue(String.class);
                                 String nombreDB = dataSnapshot.child(usuarioIngreso).child("nombre").getValue(String.class);
+                                String edad = dataSnapshot.child(usuarioIngreso).child("edad").getValue().toString();
+                                String estatura = dataSnapshot.child(usuarioIngreso).child("edad").getValue().toString();
+                                String peso = dataSnapshot.child(usuarioIngreso).child("edad").getValue().toString();
 
                                 Toast.makeText(Login.this,"Bienvenido de vuelta",Toast.LENGTH_SHORT).show();
 
-                                Intent sig = new Intent(Login.this,HomeActivity.class);
+                                Intent sig = new Intent(Login.this,Init.class);
                                 //Guardar el usuario para mostrar los datos de ese usuario en otra pantalla y solo los de ese usuario
                                 sig.putExtra("usuario",usuarioBD);
                                 sig.putExtra("email",emailDB);
                                 sig.putExtra("nombre",nombreDB);
                                 sig.putExtra("clave",claveBD);
+                                sig.putExtra("edad",edad);
+                                sig.putExtra("estatura",estatura);
+                                sig.putExtra("peso",peso);
+
                                 //Pasar a la pantalla Pefil
                                 startActivity(sig);
 
                             }else{
                                 // Si la clave que ingresó no es igual a la de la base datos
+                                progressBar.setVisibility(View.GONE);
                                 psw.setError("Contraseña incorrecta");
                                 psw.requestFocus();
                             }
@@ -101,6 +116,7 @@ public class Login extends AppCompatActivity {
 
                         }else{
                             // Si el usuario no existe
+                            progressBar.setVisibility(View.GONE);
                             usuario.setError("Ese usuario no existe");
                             usuario.requestFocus();
                         }
@@ -134,6 +150,16 @@ public class Login extends AppCompatActivity {
         });
 
     }
+
+
+
+
+
+
+
+
+
+
 }
 
 

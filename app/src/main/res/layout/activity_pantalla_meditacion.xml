@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffae00"
-    tools:context=".ClasesPrincipales.Yoga"
+    tools:context=".ClasesPrincipales.PantallaMeditacion"
     android:id="@+id/drawer_layout">
 
     <com.google.android.material.navigation.NavigationView
@@ -53,7 +53,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="YOGA"
+                android:text="MEDITACION"
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
         </RelativeLayout>
@@ -69,7 +69,6 @@
 
                 <!---INICIO LINEAR LAYOUT PRINCIPIANTE -->
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -84,7 +83,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="YOGA PARA PRINCIPIANTES"
+                            android:text="AMOR PROPIO"
                             android:textSize="20sp"
                             android:textColor="#000"
                             android:textAllCaps="true"/>
@@ -120,15 +119,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/yoga1Titulo"
+                                android:id="@+id/medTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 1"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/yoga1desc"
+                                android:id="@+id/medDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -166,15 +165,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/yoga2Titulo"
+                                android:id="@+id/medTitulo2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 2"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/yoga2Desc"
+                                android:id="@+id/medDesc2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4 To 14 Minutes"
@@ -214,15 +213,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/yoga3Titulo"
+                                android:id="@+id/medTitulo3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 3"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
                             <TextView
-                                android:id="@+id/yoga3Desc"
+                                android:id="@+id/medDesc3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5 To 15 Minutes"
@@ -257,7 +256,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="YOGA PARA FUERZA"
+                            android:text="SUEÑO PROFUNDO"
                             android:textSize="20sp"
                             android:textColor="#000"
                             android:textAllCaps="true"/>
@@ -287,15 +286,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/YOGA4tITULO"
+                                android:id="@+id/medTitulo4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 4"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/Yoga4dESC"
+                                android:id="@+id/medDesc4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -333,15 +332,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/yoga5titulo"
+                                android:id="@+id/medTitulo5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 5"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/yogA5DEsc"
+                                android:id="@+id/medDesc5"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4 To 14 Minutes"
@@ -381,15 +380,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/fitSeisTitulo"
+                                android:id="@+id/medTitulo6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 6"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
                             <TextView
-                                android:id="@+id/fitSeisDesc"
+                                android:id="@+id/medDesc6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5 To 15 Minutes"
@@ -421,7 +420,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="YOGA PARA EMBARAZADAS"
+                            android:text="ACEPTACION"
                             android:textSize="20sp"
                             android:textColor="#000"
                             android:textAllCaps="true"/>
@@ -451,15 +450,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/fitSieteTitulo"
+                                android:id="@+id/medTitulo7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 7"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/fitSieteDesc"
+                                android:id="@+id/medDesc7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -497,15 +496,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/fitOchoTitulo"
+                                android:id="@+id/medTitulo8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 8"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/fit8Desc"
+                                android:id="@+id/medDesc8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="4 To 14 Minutes"
@@ -545,15 +544,15 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/fitNueveTitulo"
+                                android:id="@+id/medTitulo9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA YOGA 9"
+                                android:text="NOMBRE MEDITACION"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
                             <TextView
-                                android:id="@+id/fitNueveDesc"
+                                android:id="@+id/medDesc0"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="5 To 15 Minutes"

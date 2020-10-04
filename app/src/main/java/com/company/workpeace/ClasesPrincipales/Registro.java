@@ -1,33 +1,29 @@
-package com.company.workpeace;
+package com.company.workpeace.ClasesPrincipales;
 
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.company.workpeace.ClasesAuxiliares.Firebase.UsuariosAux;
+import com.company.workpeace.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
 public class Registro extends AppCompatActivity {
@@ -46,6 +42,7 @@ public class Registro extends AppCompatActivity {
     FirebaseDatabase ruta;
     DatabaseReference referencia;
     FirebaseAuth autenticacion;
+    String nombreUsuario, claveUsuario,emailUsario,usarioUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +64,20 @@ public class Registro extends AppCompatActivity {
         ruta = FirebaseDatabase.getInstance();
         //Apuntar a la ruta "Usuarios"
         referencia = ruta.getReference("Usuarios");
+
+        //Toast.makeText(Registro.this,":"+usarioUsuario,Toast.LENGTH_LONG).show();
+
+
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // PASAR LAS VARIABLES A SU CORRESPONDIENTE TIPO DE DATOS
                 String genero = "";
-                String user = nUsuario.getEditText().getText().toString();
-                String nombres =nombre.getEditText().getText().toString();
-                String mail =email.getEditText().getText().toString();
-                String contrasenia =clave.getEditText().getText().toString();
-                String age =edad.getEditText().getText().toString();
+                final String user = nUsuario.getEditText().getText().toString();
+                final String nombres =nombre.getEditText().getText().toString();
+                final String mail =email.getEditText().getText().toString();
+                final String contrasenia =clave.getEditText().getText().toString();
+                final String age =edad.getEditText().getText().toString();
 
                 //Pasar el dato a entero
                 int finalAge=Integer.parseInt(age);
@@ -144,7 +145,13 @@ public class Registro extends AppCompatActivity {
                                 //Si los que ingresó es correcto, se registra y se va a pantalla perfil
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Registro.this,"Se ha registrado satisfactoriamente....",Toast.LENGTH_LONG).show();
-                                    Intent i = new Intent(Registro.this,Perfil.class);
+                                    Intent i = new Intent(Registro.this,Init.class);
+
+                                    i.putExtra("usuario",user);
+                                    i.putExtra("nombre",nombres);
+                                    i.putExtra("clave",contrasenia);
+                                    i.putExtra("email",mail);
+                                    i.putExtra("edad",age);
                                     startActivity(i);
                                 } else {
                                     //Si el usuario que se va a registrar ya existe en la base de datos
@@ -153,7 +160,7 @@ public class Registro extends AppCompatActivity {
                                     }
 
                                     else{
-                                        Toast.makeText(Registro.this,"No se pudo registrar el usuario",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Registro.this,"No se pudo autenticar el usuario",Toast.LENGTH_LONG).show();
                                     }
 
 
