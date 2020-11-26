@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffae00"
+    android:background="#dee3e2"
     tools:context=".ClasesPrincipales.PantallaMeditacion"
     android:id="@+id/drawer_layout">
 
@@ -25,7 +25,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:background="#ffae00"
+            android:background="#dee3e2"
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
 
@@ -45,7 +45,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="#ffae00"
+            android:background="#dee3e2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -59,7 +59,7 @@
         </RelativeLayout>
 
         <ScrollView
-            android:background="#ffae00"
+            android:background="#dee3e2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <LinearLayout
@@ -83,7 +83,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="AMOR PROPIO"
+                            android:text="ANSIEDAD"
                             android:textSize="20sp"
                             android:textColor="#000"
                             android:textAllCaps="true"/>
@@ -107,7 +107,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/med11"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -122,7 +122,7 @@
                                 android:id="@+id/medTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
+                                android:text="PRINCIPIANTES"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -131,7 +131,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="DESCPRIOCON RUTINA YOGA"
+                                android:text="6 minutos"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp" />
 
@@ -153,7 +153,7 @@
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/med12"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -168,7 +168,7 @@
                                 android:id="@+id/medTitulo2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
+                                android:text="INTERMEDIOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -176,7 +176,7 @@
                                 android:id="@+id/medDesc2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4 To 14 Minutes"
+                                android:text="10 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -201,7 +201,7 @@
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/med13"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -216,7 +216,7 @@
                                 android:id="@+id/medTitulo3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
+                                android:text="AVANZADOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
@@ -224,7 +224,7 @@
                                 android:id="@+id/medDesc3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5 To 15 Minutes"
+                                android:text="20 munutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -242,6 +242,170 @@
 
                 <!---INICIO LINEAR LAYOUT INTERMEDIO -->
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="40dp"
+                    android:padding="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MINDFULNESS"
+                            android:textSize="20sp"
+                            android:textColor="#000"
+                            android:textAllCaps="true"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="24dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:src="@drawable/med14"
+                            android:layout_width="110dp"
+                            android:layout_height="70dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/medTitulo4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PRINCIPIANTE"
+                                android:textColor="#000000"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/medDesc4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="6 minutos"
+                                android:textColor="#3A3A3A"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/fitCinco"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fitone"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="24dp">
+
+                        <ImageView
+                            android:src="@drawable/med15"
+                            android:layout_width="110dp"
+                            android:layout_height="70dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/medTitulo5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="INTERMEDIO"
+                                android:textColor="#000000"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/medDesc5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12 minutos"
+                                android:layout_marginTop="5dp"
+                                android:textColor="#3A3A3A"
+                                android:textSize="15sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fitSeis"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fittwo"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="24dp">
+
+                        <ImageView
+                            android:src="@drawable/med16"
+                            android:layout_width="110dp"
+                            android:layout_height="70dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/medTitulo6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AVANZADO"
+                                android:textColor="#000000"
+                                android:textSize="17sp"/>
+
+                            <TextView
+                                android:id="@+id/medDesc6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15 minutos"
+                                android:layout_marginTop="5dp"
+                                android:textColor="#3A3A3A"
+                                android:textSize="15sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- FIN LINEAR LAYOUT INTERMEDIO -->
+
+                </LinearLayout>
+
+                <!-- INICIO LINEAR LAYOUT AVANZADO -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -274,171 +438,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/abs2"
-                            android:layout_width="110dp"
-                            android:layout_height="70dp"/>
-
-                        <LinearLayout
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/medTitulo4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
-                                android:textColor="#000000"
-                                android:textSize="17sp" />
-
-                            <TextView
-                                android:id="@+id/medDesc4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:text="3 To 13 Minutes"
-                                android:textColor="#3A3A3A"
-                                android:textSize="15sp" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/fitCinco"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fitone"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginLeft="24dp">
-
-                        <ImageView
-                            android:src="@drawable/abs2"
-                            android:layout_width="110dp"
-                            android:layout_height="70dp"/>
-
-                        <LinearLayout
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/medTitulo5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
-                                android:textColor="#000000"
-                                android:textSize="17sp" />
-
-                            <TextView
-                                android:id="@+id/medDesc5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4 To 14 Minutes"
-                                android:layout_marginTop="5dp"
-                                android:textColor="#3A3A3A"
-                                android:textSize="15sp"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/fitSeis"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fittwo"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginLeft="24dp">
-
-                        <ImageView
-                            android:src="@drawable/abs2"
-                            android:layout_width="110dp"
-                            android:layout_height="70dp"/>
-
-                        <LinearLayout
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/medTitulo6"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
-                                android:textColor="#000000"
-                                android:textSize="17sp"/>
-
-                            <TextView
-                                android:id="@+id/medDesc6"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5 To 15 Minutes"
-                                android:layout_marginTop="5dp"
-                                android:textColor="#3A3A3A"
-                                android:textSize="15sp"
-                                />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <!-- FIN LINEAR LAYOUT INTERMEDIO -->
-
-                </LinearLayout>
-
-                <!-- INICIO LINEAR LAYOUT AVANZADO -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="40dp"
-                    android:padding="20dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="ACEPTACION"
-                            android:textSize="20sp"
-                            android:textColor="#000"
-                            android:textAllCaps="true"/>
-
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_marginLeft="24dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/med17"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -453,7 +453,7 @@
                                 android:id="@+id/medTitulo7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
+                                android:text="PRINCIPIANTE"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -462,7 +462,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="3 To 13 Minutes"
+                                android:text="11 minutos"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp" />
 
@@ -484,7 +484,7 @@
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/med18"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -499,7 +499,7 @@
                                 android:id="@+id/medTitulo8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
+                                android:text="INTERMEDIO"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -507,7 +507,7 @@
                                 android:id="@+id/medDesc8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4 To 14 Minutes"
+                                android:text="14 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -532,7 +532,7 @@
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/med19"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -547,7 +547,7 @@
                                 android:id="@+id/medTitulo9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NOMBRE MEDITACION"
+                                android:text="AVANZADO"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
@@ -555,7 +555,171 @@
                                 android:id="@+id/medDesc0"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5 To 15 Minutes"
+                                android:text=" 15 minutos"
+                                android:layout_marginTop="5dp"
+                                android:textColor="#3A3A3A"
+                                android:textSize="15sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="40dp"
+                    android:padding="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DOLOR FÍSICO O EMOCIONAL"
+                            android:textSize="20sp"
+                            android:textColor="#000"
+                            android:textAllCaps="true"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="24dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:src="@drawable/med20"
+                            android:layout_width="110dp"
+                            android:layout_height="70dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/medTitulo10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="PRINCIPIANTE"
+                                android:textColor="#000000"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/medDesc10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="12 minutoa"
+                                android:textColor="#3A3A3A"
+                                android:textSize="15sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/fit11"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fitone"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="24dp">
+
+                        <ImageView
+                            android:src="@drawable/med21"
+                            android:layout_width="110dp"
+                            android:layout_height="70dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/medTitulo11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="INTERMEDIO"
+                                android:textColor="#000000"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/medDesc11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="13 minutos"
+                                android:layout_marginTop="5dp"
+                                android:textColor="#3A3A3A"
+                                android:textSize="15sp"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fit40"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fittwo"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="24dp">
+
+                        <ImageView
+                            android:src="@drawable/med22"
+                            android:layout_width="110dp"
+                            android:layout_height="70dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/medTitulo12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AVANZADO"
+                                android:textColor="#000000"
+                                android:textSize="17sp"/>
+
+                            <TextView
+                                android:id="@+id/medDesc12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="16 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"

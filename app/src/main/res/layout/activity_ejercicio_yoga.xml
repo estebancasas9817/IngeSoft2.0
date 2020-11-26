@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0000ff"
+    android:background="#ffae00"
     tools:context=".ClasesPrincipales.EjercicioYoga">
 
     <LinearLayout
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,9 +22,10 @@
         android:layout_marginRight="8dp">
 
         <ImageView
-            android:src="@drawable/abs"
+            android:id="@+id/imgPoseYoga"
+            android:src="@drawable/logo"
             android:layout_width="110dp"
-            android:layout_height="70dp"/>
+            android:layout_height="90dp"/>
 
         <LinearLayout
             android:layout_marginLeft="12dp"
@@ -39,18 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="NOMBRE DEL EJERCICIO DE YOGA"
                 android:textColor="#000000"
-                android:textSize="17sp" />
-
-            <TextView
-                android:id="@+id/seriesEjerYoga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="SETS Y SERIES"
-                android:textColor="#3A3A3A"
-                android:textSize="15sp"
-                />
-
+                android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -60,11 +50,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="4dp"
         android:lineSpacingExtra="8dp"
         android:text="DESCRIPCION DEL EJERCICIO DE YOGA"
         android:textColor="#000"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayoutYoga"
         android:layout_marginLeft="24dp" />
@@ -73,16 +63,17 @@
         android:id="@+id/subDescEjerYoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="6dp"
         android:lineSpacingExtra="5dp"
-        android:text="ACA VA ALGUNA DESCPRICION \DEL EJERCICIO \nDE YOGA."
+        android:justificationMode="none"
+        android:text="Girar hacia dentro el pie derecho, y 90º hacia afuera el pie izquierdo,alinear el talón del pie de delantero, con el arco del pie de atrás. Flexiónar lateralmente sobre la pierna izquierda. Estira hacia arriba el brazo derecho. Gira el tronco hacia arriba moviendo el lado derecho del tronco hacia atrás. Mantén la postura respirando e inspira para salir de ella."
         android:textColor="#3A3A3A"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:fontFamily="sans-serif"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descEjerYoga"
-        android:layout_marginLeft="24dp" />
+        android:layout_marginLeft="4dp" />
 
     <View
         android:id="@+id/divpage"
@@ -103,7 +94,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="100dp"
         android:text="00:00"
         android:textColor="#000"
         android:textSize="68sp"
@@ -113,11 +104,11 @@
 
     <ImageView
         android:id="@+id/imgtimer"
-        android:layout_width="320dp"
-        android:layout_height="320dp"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/clock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -139,9 +130,9 @@
         android:id="@+id/btnSeguiRutinaYoga"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="22dp"
         android:gravity="center"
         android:text="CONTINUAR RUTINA DE YOGA"
         android:textAlignment="center"
@@ -149,7 +140,24 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnEmpezar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="22dp"
+        android:gravity="center"
+        android:text="EMPEZAR RUTINA"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

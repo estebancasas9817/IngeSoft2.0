@@ -3,7 +3,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,7 +15,8 @@ import java.util.Locale;
 
 public class Ejemplo extends AppCompatActivity {
     TextView intropage, subintropage, fitonetitle, fitonedesc, timerValue, btnexercise;
-    View divpage, bgprogress;
+    View divpage, bgprogress, btnempezar;
+    TextView nombreEjer;
     LinearLayout fitone;
     ImageView imgTimer;
 
@@ -29,6 +29,8 @@ public class Ejemplo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ejemplo);
+
+        nombreEjer = findViewById(R.id.nombreEjercicio1);
 
         intropage = (TextView) findViewById(R.id.descripcionEjercicio1);
         subintropage = (TextView) findViewById(R.id.subDescEjer1);
@@ -44,6 +46,21 @@ public class Ejemplo extends AppCompatActivity {
 
         imgTimer = (ImageView) findViewById(R.id.imgtimer);
 
+        Intent llega = getIntent();
+        final String ejer1,ejer2,ejer3,ejer4,ejer5,ejer6,rutNombre;
+        ejer1 = llega.getStringExtra("eje1");
+        ejer2 = llega.getStringExtra("eje2");
+        ejer3 = llega.getStringExtra("eje3");
+        ejer4 = llega.getStringExtra("eje4");
+        ejer5 = llega.getStringExtra("eje5");
+        ejer6 = llega.getStringExtra("eje6");
+        rutNombre = llega.getStringExtra("rutNombre");
+        final int tipoRutina = llega.getIntExtra("rut1",0);
+        Toast.makeText(Ejemplo.this,":"+ejer1,Toast.LENGTH_LONG).show();
+
+        nombreEjer.setText(rutNombre);
+
+
 
         startTimer();
 
@@ -51,6 +68,14 @@ public class Ejemplo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent volverRutina = new Intent(Ejemplo.this, Exercise.class);
+                volverRutina.putExtra("eje1",ejer1);
+                volverRutina.putExtra("eje2",ejer2);
+                volverRutina.putExtra("eje3",ejer3);
+                volverRutina.putExtra("eje4",ejer4);
+                volverRutina.putExtra("eje5",ejer5);
+                volverRutina.putExtra("eje6",ejer6);
+                volverRutina.putExtra("eje7",rutNombre);
+                volverRutina.putExtra("rut1",tipoRutina);
                 startActivity(volverRutina);
             }
         });

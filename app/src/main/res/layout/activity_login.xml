@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ClasesPrincipales.Login"
     android:orientation="vertical"
-    android:background="#ffae00"
+    android:background="#dee3e2"
     android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffae00"
+        android:background="#dee3e2"
         android:orientation="vertical">
 
         <ProgressBar
@@ -60,6 +60,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/usuarioLogin"
                 android:hint="@string/Usuario"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/correoLogin"
+                android:hint="@string/Mail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText

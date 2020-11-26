@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.company.workpeace.ClasesAuxiliares.Firebase.MarcasAux;
+import com.company.workpeace.ClasesAuxiliares.Firebase.MedidasAux;
 import com.company.workpeace.ClasesAuxiliares.Firebase.UsuariosAux;
 import com.company.workpeace.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,8 +42,15 @@ public class Registro extends AppCompatActivity {
     Button btnRegistrarse;
     Button btnLogin;
     FirebaseDatabase ruta;
+    FirebaseDatabase rutaMarcas;
+    FirebaseDatabase rutaMedidas;
+    DatabaseReference referenciaMarcas;
+    DatabaseReference referenciaMedidas;
     DatabaseReference referencia;
     FirebaseAuth autenticacion;
+
+    DatabaseReference referenciaWorkout;
+    FirebaseDatabase rutaWorkout;
     String nombreUsuario, claveUsuario,emailUsario,usarioUsuario;
 
     @Override
@@ -62,8 +71,20 @@ public class Registro extends AppCompatActivity {
         btnRegistrarse = findViewById(R.id.btnRegistro);
         autenticacion = FirebaseAuth.getInstance();
         ruta = FirebaseDatabase.getInstance();
+        rutaMarcas = FirebaseDatabase.getInstance();
+        rutaMedidas = FirebaseDatabase.getInstance();
         //Apuntar a la ruta "Usuarios"
         referencia = ruta.getReference("Usuarios");
+        referenciaMarcas = rutaMarcas.getReference("Marcas");
+        referenciaMedidas = rutaMedidas.getReference("Medidas");
+
+        //referenciaWorkout = rutaWorkout.getReference("Workouts");
+
+        //final String pecho1 = "Fortalecimiento principiantes pecho";
+
+        //DescripcionAux descripcionAux = new DescripcionAux("h","h","h","h","h","h");
+        //referenciaWorkout.child(pecho1).setValue(descripcionAux);
+        //referencia.child(pecho1).setValue(ejercicioAux);
 
         //Toast.makeText(Registro.this,":"+usarioUsuario,Toast.LENGTH_LONG).show();
 
@@ -84,7 +105,7 @@ public class Registro extends AppCompatActivity {
                 String height =estatura.getEditText().getText().toString();
                 //Pasar el dato a flotante
                 float finalHeight = Float.parseFloat(height);
-                String kg =peso.getEditText().getText().toString();
+                final String kg =peso.getEditText().getText().toString();
                 //Pasar el dato a flotante
                 float finalPeso=Float.parseFloat(kg);
 
@@ -133,41 +154,23 @@ public class Registro extends AppCompatActivity {
                 }
                 // ALMACENAR DATOS ANTERIORMENTE GUARDADOS EN LA BASE DE DATOS, USANDO LA CLASE USUARIOSAUX
                 UsuariosAux aux = new UsuariosAux(user,nombres,mail,contrasenia,genero,finalAge, finalHeight,finalPeso);
+
+                MedidasAux medidasAux = new MedidasAux("0","0",
+                        "0","0","0","0","0","0",user);
+
+                MarcasAux marcasAux = new MarcasAux("0","0","0","0",
+                        "0","0","0","0","0","0",
+                        "0","0","0","0","0","0",user);
+                referenciaMarcas.child(user).setValue(marcasAux);
+                referenciaMedidas.child(user).setValue(medidasAux);
                 // DATOS QUEDAN GUARDADOS EN LA RUTA "Usuarios/usuario(nombre del usuario)"
                 referencia.child(user).setValue(aux);
 
                 //AUTENTICACION DE USUARIOS NUEVOS
 
-                autenticacion.createUserWithEmailAndPassword(mail, contrasenia)
-                        .addOnCompleteListener(Registro.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                //Si los que ingresó es correcto, se registra y se va a pantalla perfil
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(Registro.this,"Se ha registrado satisfactoriamente....",Toast.LENGTH_LONG).show();
-                                    Intent i = new Intent(Registro.this,Init.class);
-
-                                    i.putExtra("usuario",user);
-                                    i.putExtra("nombre",nombres);
-                                    i.putExtra("clave",contrasenia);
-                                    i.putExtra("email",mail);
-                                    i.putExtra("edad",age);
-                                    startActivity(i);
-                                } else {
-                                    //Si el usuario que se va a registrar ya existe en la base de datos
-                                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                                        Toast.makeText(Registro.this,"Ese usuario ya existe",Toast.LENGTH_SHORT).show();
-                                    }
-
-                                    else{
-                                        Toast.makeText(Registro.this,"No se pudo autenticar el usuario",Toast.LENGTH_LONG).show();
-                                    }
 
 
-                                }
 
-                            }
-                        });
 
             }
         });

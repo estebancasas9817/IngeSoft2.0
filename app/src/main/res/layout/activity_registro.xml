@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ClasesPrincipales.Registro"
     android:orientation="vertical"
-    android:background="#ffae00"
+    android:background="#dee3e2"
     android:padding="20dp">
 
     <!--DISEÑO DEL LOGO-->
@@ -206,7 +206,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text">
+                        android:inputType="numberDecimal">
 
                     </com.google.android.material.textfield.TextInputEditText>
 

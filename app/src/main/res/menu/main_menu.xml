@@ -31,7 +31,7 @@
                     android:icon="@drawable/ic_person"/>
 
                 <item
-                    android:id="@+id/logout"
+                    android:id="@+id/nav_logout"
                     android:title="LOG-OUT"
                     android:icon="@drawable/ic_lock"/>
 
@@ -44,11 +44,6 @@
         <menu>
 
             <group android:checkableBehavior="single">
-
-                <item
-                    android:id="@+id/nav_ejercicio"
-                    android:title="EJERCICIO"
-                    android:icon="@drawable/ic_bullet"/>
 
                 <item
                     android:id="@+id/nav_meditacion"

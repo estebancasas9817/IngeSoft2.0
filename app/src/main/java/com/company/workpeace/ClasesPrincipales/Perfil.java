@@ -22,6 +22,8 @@ public class Perfil extends AppCompatActivity {
 
     ImageView btn;
 
+    ImageView volver;
+
     String _USERNAME, _NAME, _EMAIL,_PASSWORD;
 
     DatabaseReference reference;
@@ -31,6 +33,8 @@ public class Perfil extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
         reference = FirebaseDatabase.getInstance().getReference("Usuarios");
 
+        volver = findViewById(R.id.volverPerfil);
+
         fullName = findViewById(R.id.full_name_profile);
         email = findViewById(R.id.email_profile);
         password = findViewById(R.id.password_profile);
@@ -38,8 +42,12 @@ public class Perfil extends AppCompatActivity {
         usernameLabel = findViewById(R.id.username_field);
         btnAct = findViewById(R.id.btnActualizar);
 
-
-
+        Intent intent = getIntent();
+        final String usuarioss, claves, mails,nombres;
+        usuarioss = intent.getStringExtra("usuario");
+        nombres = intent.getStringExtra("nombre");
+        mails = intent.getStringExtra("email");
+        claves = intent.getStringExtra("clave");
 
         showAllUserData();
 
@@ -54,6 +62,19 @@ public class Perfil extends AppCompatActivity {
                 }
                 else Toast.makeText(Perfil.this, "Los datos son los mismos, no se pudieron actualizar ", Toast.LENGTH_LONG).show();
 
+            }
+        });
+
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent volver = new Intent(Perfil.this,Yoga.class);
+                volver.putExtra("usuario",usuarioss);
+                volver.putExtra("nombre",nombres);
+                volver.putExtra("email",mails);
+                volver.putExtra("clave",claves);
+                startActivity(volver);
             }
         });
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffae00"
+    android:background="#fff"
     tools:context=".ClasesPrincipales.Init"
     android:id="@+id/drawer_layout">
 
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/navigationTheme"
-        android:background="#d8e6de"
+        android:background="#dee3e2"
         android:layout_gravity="start"
         app:headerLayout="@layout/menu_header"
         app:menu="@menu/main_menu"/>
@@ -25,7 +25,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:background="#ffae00"
+            android:background="#dee3e2"
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
 
@@ -45,7 +45,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="#ffae00"
+            android:background="#dee3e2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
@@ -54,12 +54,13 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="WORKOUTS"
+                android:background="#dee3e2"
                 android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
         </RelativeLayout>
 
         <ScrollView
-            android:background="#ffae00"
+            android:background="#dee3e2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <LinearLayout
@@ -81,9 +82,10 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/fortalecimiento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="OBJETIVO 1PRINCIPIANTES"
+                            android:text="Fortalecimiento"
                             android:textSize="20sp"
                             android:textColor="#000"
                             android:textAllCaps="true"/>
@@ -97,6 +99,7 @@
                     </RelativeLayout>
 
                     <LinearLayout
+                        android:id="@+id/fitForta1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -107,7 +110,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/force1"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -122,7 +125,7 @@
                                 android:id="@+id/fitUnoTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 1"
+                                android:text="PRINCIPIANTES"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -131,7 +134,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="3 To 13 Minutes"
+                                android:text="25 a 35 minutos"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp" />
 
@@ -139,7 +142,7 @@
 
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/fitDos"
+                        android:id="@+id/fitForta2"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -148,12 +151,12 @@
                         android:layout_marginTop="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fitone"
+                        app:layout_constraintTop_toBottomOf="@+id/fitForta1"
                         android:layout_marginRight="8dp"
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/fitcouple2"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -168,7 +171,7 @@
                                 android:id="@+id/fitDosTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 2"
+                                android:text="INTERMEDIOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -176,7 +179,7 @@
                                 android:id="@+id/fitDosDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4 To 14 Minutes"
+                                android:text="30 a 40 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -187,7 +190,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/fitTres"
+                        android:id="@+id/fitForta3"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -196,12 +199,12 @@
                         android:layout_marginTop="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fittwo"
+                        app:layout_constraintTop_toBottomOf="@+id/fitForta2"
                         android:layout_marginRight="8dp"
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/force3"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -216,7 +219,7 @@
                                 android:id="@+id/fitTresTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 3"
+                                android:text="AVANZADOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
@@ -224,7 +227,7 @@
                                 android:id="@+id/fitTresDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5 To 15 Minutes"
+                                android:text="40 a 50 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -233,6 +236,9 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
+
+
                     <!---FIN LINEAR LAYOUT PRINCIPIANES -->
 
 
@@ -254,16 +260,19 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/acondicionamiento"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="OBJETIVO 1INTERMEDIO"
+                            android:text="ACONDICIONAMIENTO"
                             android:textSize="20sp"
                             android:textColor="#000"
                             android:textAllCaps="true"/>
 
                     </RelativeLayout>
 
+
                     <LinearLayout
+                        android:id="@+id/Acon1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -274,7 +283,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/fitcouple2"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -289,7 +298,7 @@
                                 android:id="@+id/fitCuatroTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 4"
+                                android:text="PRINCIPIANTES"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -298,7 +307,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="3 To 13 Minutes"
+                                android:text="25 a 35 minutos"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp" />
 
@@ -306,7 +315,7 @@
 
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/fitCinco"
+                        android:id="@+id/Acon2"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -315,12 +324,12 @@
                         android:layout_marginTop="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fitone"
+                        app:layout_constraintTop_toBottomOf="@+id/Acon1"
                         android:layout_marginRight="8dp"
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/acon2"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -335,7 +344,7 @@
                                 android:id="@+id/fitCincoTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 5"
+                                android:text="INTERMEDIOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -343,7 +352,7 @@
                                 android:id="@+id/fitCincoDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4 To 14 Minutes"
+                                android:text="30 a 40 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -354,7 +363,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/fitSeis"
+                        android:id="@+id/Acon3"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -363,12 +372,12 @@
                         android:layout_marginTop="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fittwo"
+                        app:layout_constraintTop_toBottomOf="@+id/Acon2"
                         android:layout_marginRight="8dp"
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/acon3"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -383,7 +392,7 @@
                                 android:id="@+id/fitSeisTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 6"
+                                android:text="AVANZADOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
@@ -391,7 +400,7 @@
                                 android:id="@+id/fitSeisDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5 To 15 Minutes"
+                                android:text="45 a 55 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -400,6 +409,12 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
+
+
+
+
+
 
                     <!-- FIN LINEAR LAYOUT INTERMEDIO -->
 
@@ -418,9 +433,10 @@
                         android:layout_height="wrap_content">
 
                         <TextView
+                            android:id="@+id/bajarPeso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="OBJETIVOS 1AVANZADOS"
+                            android:text="BAJAR DE PESO"
                             android:textSize="20sp"
                             android:textColor="#000"
                             android:textAllCaps="true"/>
@@ -438,7 +454,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/bajar_peso1"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -453,7 +469,7 @@
                                 android:id="@+id/fitSieteTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 7"
+                                android:text="PRINCIPIANTES"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
@@ -462,7 +478,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
-                                android:text="3 To 13 Minutes"
+                                android:text="25 a 35 minutos"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp" />
 
@@ -484,7 +500,7 @@
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/bajar_peso2"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -499,15 +515,15 @@
                                 android:id="@+id/fitOchoTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 8"
+                                android:text="INTERMEDIOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp" />
 
                             <TextView
-                                android:id="@+id/fit8Desc"
+                                android:id="@+id/fitOchoDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4 To 14 Minutes"
+                                android:text="40 a 45 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -527,12 +543,12 @@
                         android:layout_marginTop="20dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/fittwo"
+                        app:layout_constraintTop_toBottomOf="@+id/fitOcho"
                         android:layout_marginRight="8dp"
                         android:layout_marginLeft="24dp">
 
                         <ImageView
-                            android:src="@drawable/abs2"
+                            android:src="@drawable/bajar_peso3"
                             android:layout_width="110dp"
                             android:layout_height="70dp"/>
 
@@ -547,7 +563,7 @@
                                 android:id="@+id/fitNueveTitulo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="RUTINA 9"
+                                android:text="AVANZADOS"
                                 android:textColor="#000000"
                                 android:textSize="17sp"/>
 
@@ -555,7 +571,7 @@
                                 android:id="@+id/fitNueveDesc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5 To 15 Minutes"
+                                android:text="40 a 50 minutos"
                                 android:layout_marginTop="5dp"
                                 android:textColor="#3A3A3A"
                                 android:textSize="15sp"
@@ -571,6 +587,8 @@
                 </LinearLayout>
 
 
+
+
             </LinearLayout>
 
         </ScrollView>
@@ -578,5 +596,3 @@
     </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
-

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0000ff"
+    android:background="#ffae00"
     tools:context=".ClasesPrincipales.Ejemplo">
 
     <LinearLayout
@@ -22,7 +22,7 @@
         android:layout_marginRight="8dp">
 
         <ImageView
-            android:src="@drawable/abs"
+            android:src="@drawable/logo"
             android:layout_width="110dp"
             android:layout_height="70dp"/>
 
@@ -76,6 +76,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="6dp"
         android:lineSpacingExtra="5dp"
+        android:justificationMode="inter_word"
         android:text="ACA VA ALGUNA DESCPRICION \DEL EJERCICIO."
         android:textColor="#3A3A3A"
         android:textSize="16sp"
@@ -139,17 +140,34 @@
         android:id="@+id/btnSeguirRutina1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
         android:gravity="center"
-        android:text="CONTINUE WORKOUT"
+        android:text="CONTINUAR"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintHorizontal_bias="0.921"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/btnEmpezarReloj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:text="INICIAR"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
