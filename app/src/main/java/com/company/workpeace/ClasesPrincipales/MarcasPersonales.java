@@ -20,13 +20,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
+//CLASE QUE PERMITE AL USUARIO VER Y EDITAR SUS MARCAS PERSONALES
+
 public class MarcasPersonales extends AppCompatActivity {
 
     TextInputLayout marca1,marca2,marca3,marca4,marca5,marca6,marca7,marca8;
     TextInputLayout marcaA1,marcaA2,marcaA3,marcaA4,marcaA5,marcaA6,marcaA7,marcaA8;
 
     TextView ir,ir2,ir3,ir4,ir5,ir6,ir7,ir8;
-    Button btnActualizarMarcas;
+    Button btnActualizarMarcas, btnActualizarFlex, btnActualizarSquats, btnActualizarPica,btnActualizarCrunch, btnActualizarTriceps;
+    Button btnActualizarSupina, btnActualizarPared;
 
     ImageView devolver;
 
@@ -60,6 +64,13 @@ public class MarcasPersonales extends AppCompatActivity {
 
 
         btnActualizarMarcas = findViewById(R.id.btnActualizarMarcas);
+        btnActualizarCrunch = findViewById(R.id.btnActualizarCrunch);
+        btnActualizarFlex = findViewById(R.id.btnActualizarFlexiones);
+        btnActualizarPared = findViewById(R.id.btnActualizarPared);
+        btnActualizarPica = findViewById(R.id.btnActualizarPica);
+        btnActualizarSquats = findViewById(R.id.btnActualizarSquats);
+        btnActualizarTriceps = findViewById(R.id.btnActualizarTriceps);
+        btnActualizarSupina = findViewById(R.id.btnActualizarSupina);
         usuario = intent.getStringExtra("usuario");
         reference = FirebaseDatabase.getInstance().getReference("Marcas");
         final Query checkUsuario = reference.orderByChild("usuario").equalTo(usuario);
@@ -386,9 +397,7 @@ public class MarcasPersonales extends AppCompatActivity {
     private void actualizarDatos(final String cant1,final String cant2,final String cant3,final String cant4
             ,final String cant5,final String cant6,final String cant7,final String cant8) {
         final String personal2,personal3,personal4,personal5,personal6,personal7,personal8;
-
-
-        btnActualizarMarcas.setOnClickListener(new View.OnClickListener() {
+        btnActualizarFlex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(MarcasPersonales.this,":hola"+personal,Toast.LENGTH_LONG).show();
@@ -398,8 +407,12 @@ public class MarcasPersonales extends AppCompatActivity {
 
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
                 }
-                //Toast.makeText(MarcasPersonales.this,":"+cant2,Toast.LENGTH_LONG).show();
-
+                marcaA1.getEditText().setText(cant1);
+            }
+        });
+        btnActualizarSquats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(!cant2.equals(marca2.getEditText().getText().toString())){
                     Toast.makeText(MarcasPersonales.this,":SI ENTRA",Toast.LENGTH_LONG).show();
                     reference.child(usuario).child("nuevaMarca2").setValue(marca2.getEditText().getText().toString());
@@ -408,16 +421,24 @@ public class MarcasPersonales extends AppCompatActivity {
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
 
                 }
-
+                marcaA2.getEditText().setText(cant2);
+            }
+        });
+        btnActualizarPica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(!cant3.equals(marca3.getEditText().getText().toString())){
                     reference.child(usuario).child("nuevaMarca3").setValue(marca3.getEditText().getText().toString());
                     reference.child(usuario).child("marcaAnterior3").setValue(cant3);
 
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
-
-
                 }
-
+                marcaA3.getEditText().setText(cant3);
+            }
+        });
+        btnActualizarCrunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(!cant4.equals(marca3.getEditText().getText().toString())){
                     reference.child(usuario).child("nuevaMarca4").setValue(marca4.getEditText().getText().toString());
                     reference.child(usuario).child("marcaAnterior4").setValue(cant4);
@@ -425,7 +446,12 @@ public class MarcasPersonales extends AppCompatActivity {
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
 
                 }
-
+                marcaA4.getEditText().setText(cant4);
+            }
+        });
+        btnActualizarTriceps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(!cant5.equals(marca2.getEditText().getText().toString())){
                     reference.child(usuario).child("nuevaMarca5").setValue(marca5.getEditText().getText().toString());
                     reference.child(usuario).child("marcaAnterior5").setValue(cant5);
@@ -433,51 +459,45 @@ public class MarcasPersonales extends AppCompatActivity {
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
 
                 }
-
+                marcaA5.getEditText().setText(cant5);
+            }
+        });
+        btnActualizarSupina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(!cant6.equals(marca6.getEditText().getText().toString())){
                     reference.child(usuario).child("nuevaMarca6").setValue(marca6.getEditText().getText().toString());
                     reference.child(usuario).child("marcaAnterior6").setValue(cant6);
 
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
-
                 }
-
+                marcaA6.getEditText().setText(cant6);
+            }
+        });
+        btnActualizarPared.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(!cant7.equals(marca7.getEditText().getText().toString())){
                     reference.child(usuario).child("nuevaMarca7").setValue(marca7.getEditText().getText().toString());
                     reference.child(usuario).child("marcaAnterior7").setValue(cant7);
 
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
-
                 }
-
+                marcaA7.getEditText().setText(cant7);
+            }
+        });
+        btnActualizarMarcas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(!cant8.equals(marca8.getEditText().getText().toString())){
                     reference.child(usuario).child("nuevaMarca8").setValue(marca8.getEditText().getText().toString());
                     reference.child(usuario).child("marcaAnterior8").setValue(cant8);
 
                     Toast.makeText(MarcasPersonales.this,"Datos actualizados....",Toast.LENGTH_LONG).show();
-
                 }
-
-
-
-
-
-
-                marcaA1.getEditText().setText(cant1);
-                marcaA2.getEditText().setText(cant2);
-                marcaA3.getEditText().setText(cant3);
-                marcaA4.getEditText().setText(cant4);
-                marcaA5.getEditText().setText(cant5);
-                marcaA6.getEditText().setText(cant6);
-                marcaA7.getEditText().setText(cant7);
                 marcaA8.getEditText().setText(cant8);
-
-
-
-
             }
         });
-
     }
 
 

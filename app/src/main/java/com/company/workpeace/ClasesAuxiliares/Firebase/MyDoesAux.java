@@ -2,6 +2,12 @@ package com.company.workpeace.ClasesAuxiliares.Firebase;
 
 import com.company.workpeace.ClasesPrincipales.MyDoes;
 
+
+// CLASE AUXILIAR QUE ME GUARDA LOS ATRIBUTOS DE LA CLASE RECORDATORIOS
+//  PARA LUEGO SUBIRLAS A LA BASE DE DATOS.
+
+
+
 public class MyDoesAux {
 
     String titulo, descripcion, fecha;

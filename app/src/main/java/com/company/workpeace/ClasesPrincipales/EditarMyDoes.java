@@ -36,6 +36,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+// CLASE QUE PERMITE AL USUARIO EDITAR SUS
+// RECORDATORIOS
+
+
 public class EditarMyDoes extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     EditText titulo, desc, fecha, editarHora;

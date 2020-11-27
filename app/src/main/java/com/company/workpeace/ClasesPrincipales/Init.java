@@ -17,6 +17,10 @@ import android.widget.TextView;
 import com.company.workpeace.R;
 import com.google.android.material.navigation.NavigationView;
 
+// CLASE PRINCIPAL
+// CLASE QUE MUESTRA LAS RUTINAS POR OBJETIVO
+
+
 public class Init extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     ImageView menuIcon;
@@ -278,14 +282,53 @@ public class Init extends AppCompatActivity implements NavigationView.OnNavigati
                 break;
 
             case R.id.nav_dias_meditacion:
-                Intent dias = new Intent(Init.this,Probando.class);
+                Intent dias = new Intent(Init.this,HistorialMeditacionActivity.class);
                 dias.putExtra("usuario",usuario);
                 dias.putExtra("nombre",nombre);
                 dias.putExtra("clave",clave);
                 dias.putExtra("email",correo);
                 startActivity(dias);
                 break;
-
+            case R.id.nav_dias_ejercicio:
+                Intent diasEjer = new Intent(Init.this,HistorialEjercicioActivity.class);
+                diasEjer.putExtra("usuario",usuario);
+                diasEjer.putExtra("nombre",nombre);
+                diasEjer.putExtra("clave",clave);
+                diasEjer.putExtra("email",correo);
+                startActivity(diasEjer);
+                break;
+            case R.id.nav_dias_yoga:
+                Intent diasYog = new Intent(Init.this,HistorialYogaActivity.class);
+                diasYog.putExtra("usuario",usuario);
+                diasYog.putExtra("nombre",nombre);
+                diasYog.putExtra("clave",clave);
+                diasYog.putExtra("email",correo);
+                startActivity(diasYog);
+                break;
+            case R.id.nav_recordatorio:
+                Intent recordatorio = new Intent(Init.this,MyDoes.class);
+                recordatorio.putExtra("usuario",usuario);
+                recordatorio.putExtra("nombre",nombre);
+                recordatorio.putExtra("clave",clave);
+                recordatorio.putExtra("email",correo);
+                startActivity(recordatorio);
+                break;
+            case R.id.nav_mis_rutinas:
+                Intent misRutinas = new Intent(Init.this,Rutinas.class);
+                misRutinas.putExtra("usuario",usuario);
+                misRutinas.putExtra("nombre",nombre);
+                misRutinas.putExtra("clave",clave);
+                misRutinas.putExtra("email",correo);
+                startActivity(misRutinas);
+                break;
+            case R.id.nav_peso_y_medidas:
+                Intent misMedidas = new Intent(Init.this,Probando.class);
+                misMedidas.putExtra("usuario",usuario);
+                misMedidas.putExtra("nombre",nombre);
+                misMedidas.putExtra("clave",clave);
+                misMedidas.putExtra("email",correo);
+                startActivity(misMedidas);
+                break;
             case R.id.nav_logout:
                 Intent logout = new Intent(Init.this, Login.class);
                 logout.putExtra("usuario",usuario);
@@ -294,6 +337,7 @@ public class Init extends AppCompatActivity implements NavigationView.OnNavigati
                 logout.putExtra("email",correo);
                 startActivity(logout);
                 break;
+
 
 
 

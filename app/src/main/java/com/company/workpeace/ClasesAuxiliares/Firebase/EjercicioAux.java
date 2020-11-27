@@ -1,5 +1,8 @@
 package com.company.workpeace.ClasesAuxiliares.Firebase;
 
+
+// CLASE AUXILIAR QUE ME VA A GUARDAR LOS DATOS DE LOS EJERCICIOS PARA LEERLOS DESDE LA BASE DE DATOS.
+
 public class EjercicioAux {
     String ejercicio1, ejercicio2,ejercicio3,ejercicio4,ejercicio5,ejercicio6,nombre;
     String descripcion1,descripcion2,descripcion3,descripcion4,descripcion5,descripcion6;

@@ -19,6 +19,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+// PANTALLA QUE PERMITE LEER LAS RUTINAS DE EJERCICIO
+// DESDE FIREBASE
+
 public class RutinasEjercicio extends AppCompatActivity {
 
     TextView ejercicio,ejercicio2,ejercicio3,ejercicio4,ejercicio5,nombre;
@@ -28,7 +37,7 @@ public class RutinasEjercicio extends AppCompatActivity {
     ImageView volver;
 
     DatabaseReference referencia;
-
+    DatabaseReference baseDatos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +61,7 @@ public class RutinasEjercicio extends AppCompatActivity {
         referenciaMarcas = FirebaseDatabase.getInstance().getReference("Workouts");
         rutaMarcas = FirebaseDatabase.getInstance();
         referencia = rutaMarcas.getReference("Workouts");
-
+        baseDatos = FirebaseDatabase.getInstance().getReference();
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +73,7 @@ public class RutinasEjercicio extends AppCompatActivity {
                 startActivity(volver);
             }
         });
-        Intent recibir = getIntent();
+        final Intent recibir = getIntent();
         final int a = recibir.getIntExtra("rut1",0);
         String nombreRutina = recibir.getStringExtra("rutNombre");
         nombre = findViewById(R.id.rutinas);
@@ -78,13 +87,7 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,"Flexiones con brazos abiertos",
                 "Flexiones hindúes"
                 ,"Flexiones con inclinación"
-                ,pecho1," Sobre una superficie elevada colocar la palma de las manos a la anchura de los hombros, con los codos extendidos y el cuerpo recto. A continuación, se baja el pecho hasta que quede muy cerca de la superficie y se extiende los brazos para volver a la posición inicial "
-                ," Apoyar las rodillas sobre el suelo y levantar ligeramente los pies, colocar la palma de las manos separadas y los brazos completamente estirados. A continuación, se baja el pecho hasta que quede muy cerca del suelo y se extiende los brazos para volver a la posición inicial "
-                , "Apoyar sobre el suelo la palma de las manos a la anchura de los hombros, con el cuerpo recto y los brazos estirados. A continuación, se baja el pecho hasta que quede muy cerca del suelo y se extiende los brazos para volver a la posición inicial "
-                , "Apoyar sobre el suelo la palma de las manos con una anchura superior que los hombros, con el cuerpo recto y los brazos estirados. A continuación, se baja el pecho hasta que quede muy cerca del suelo y se extiende los brazos para volver a la posición inicial"
-                ," Apoyar sobre el suelo la palma de las manos a la anchura de los hombros, con la espalda recta y la cadera elevada. A continuación, se baja el pecho hasta que el cuerpo quede recto y se extiende los brazos y sube la cadera para volver a la posición inicial "
-                ," Sobre una superficie elevada colocar la palma de las manos a la anchura de los hombros, con los codos extendidos y el cuerpo recto. A continuación, se baja el pecho hasta que quede muy cerca de la superficie y se extiende los brazos para volver a la posición inicial "
-                , " 3 sets de 8 reps "," 3 sets de 6 reps "," 3 sets de 6 reps "," 3 sets de 6 reps "," 2 sets de 6 reps ", " 2 sets de 8 reps");
+                ,pecho1," Sobre una superficie elevada colocar la palma de las manos a la anchura de los hombros, con los codos extendidos y el cuerpo recto. A continuación, se baja el pecho hasta que quede muy cerca de la superficie y se extiende los brazos para volver a la posición inicial "," Apoyar las rodillas sobre el suelo y levantar ligeramente los pies, colocar la palma de las manos separadas y los brazos completamente estirados. A continuación, se baja el pecho hasta que quede muy cerca del suelo y se extiende los brazos para volver a la posición inicial ", "Apoyar sobre el suelo la palma de las manos a la anchura de los hombros, con el cuerpo recto y los brazos estirados. A continuación, se baja el pecho hasta que quede muy cerca del suelo y se extiende los brazos para volver a la posición inicial ", "Apoyar sobre el suelo la palma de las manos con una anchura superior que los hombros, con el cuerpo recto y los brazos estirados. A continuación, se baja el pecho hasta que quede muy cerca del suelo y se extiende los brazos para volver a la posición inicial"," Apoyar sobre el suelo la palma de las manos a la anchura de los hombros, con la espalda recta y la cadera elevada. A continuación, se baja el pecho hasta que el cuerpo quede recto y se extiende los brazos y sube la cadera para volver a la posición inicial "," Sobre una superficie elevada colocar la palma de las manos a la anchura de los hombros, con los codos extendidos y el cuerpo recto. A continuación, se baja el pecho hasta que quede muy cerca de la superficie y se extiende los brazos para volver a la posición inicial ", " 3 sets de 8 reps "," 3 sets de 6 reps "," 3 sets de 6 reps "," 3 sets de 6 reps "," 2 sets de 6 reps ", " 2 sets de 8 reps");
         referencia.child(pecho1).setValue(ejercicioAux);
 
 
@@ -130,7 +133,7 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,"2 sets de 12 reps "
                 ,"4 sets de 8 reps "
                 ,"3 sets de 8 reps "
-        ,"3 sets de 12 reps");
+                ,"3 sets de 12 reps");
 
         referencia.child(pecho3).setValue(ejercicioAux3);
 
@@ -152,8 +155,8 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,"3 sets de 6 reps "
                 ,"3 sets de 6 reps "
                 ,"3 sets de 8 reps "
-        ,"3 sets de 8 reps"
-        ,"2 sets de 12 reps");
+                ,"3 sets de 8 reps"
+                ,"2 sets de 12 reps");
 
         referencia.child(pecho4).setValue(ejercicioAux4);
 
@@ -176,7 +179,7 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,"3 sets de 6 reps "
                 ,"3 sets de 4 reps "
                 ,"3 sets de 6 reps "
-        ,"4 sets de 8 reps");
+                ,"4 sets de 8 reps");
 
         referencia.child(pecho5).setValue(ejercicioAux5);
 
@@ -199,7 +202,7 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,"3 sets de 6 reps"
                 ,"3 sets de 4 reps"
                 ,"2 sets de 6 reps"
-        ,"3 sets de 10 reps");
+                ,"3 sets de 10 reps");
         referencia.child(pecho6).setValue(ejercicioAux6);
 
         final String pecho7 = "Bajar de peso principiantes pecho";
@@ -261,12 +264,12 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,"Flexiones"
                 ,brazo10
                 ,"Sentados en una silla colocando las manos al lado del cuerpo con los dedos mirando hacia delante, luego nos sostenemos sobre los brazos bajando los glúteos hasta que tus codos queden lo más cerca de un ángulo de 90 grados. Empujamos ejerciendo fuerza con los tríceps para volver a la posición inicial de manera que los brazos queden estirados."
-        ,"Colócate en la misma posición que para las flexiones clásicas. Coloca las manos formando un triángulo. Inspira, contrae los brazos al bajar y mantén los pies juntos. Expira profundamente al acabar el movimiento, metiendo el abdomen para trabajar los abdominales interiores."
-        ,"Colócate en posición de plancha frontal, ahora lleva el brazo derecho hacia adelante y la pierna izquierda atrás. Repite con la pierna y brazo contrario y alterna los movimientos"
-        ,"Colócate en posición de lucha, con los puños hacia arriba y las palmas enfrentadas. Rota las caderas a la izquierda y extiende el brazo derecho girando el antebrazo, de modo que las uñas apunten al suelo y el brazo quede alineado con el hombro. Vuelve a la posición inicial y repite con el otro lado"
-        ,"Camina con tus manos hacia adelante hasta que estés apoyando todo tu peso en tus manos y dedos de los pies. Tu cuerpo debe hacer una línea recta y tus manos deben alinearse con tus hombros. Camina tus pies hacia adelante para encontrarte con tus manos."
-        ,"Acuéstate boca abajo y coloque las manos en el suelo al ancho de los hombros. Levanta el cuerpo hacia arriba y ve enderezando los brazos. El cuerpo debe apoyarse únicamente sobre las manos y los dedos de los pies. Bajamos el cuerpo doblando los brazos, volvemos a la posición inicial extendiendo los brazos."
-        ,"3 sets de 6 reps"
+                ,"Colócate en la misma posición que para las flexiones clásicas. Coloca las manos formando un triángulo. Inspira, contrae los brazos al bajar y mantén los pies juntos. Expira profundamente al acabar el movimiento, metiendo el abdomen para trabajar los abdominales interiores."
+                ,"Colócate en posición de plancha frontal, ahora lleva el brazo derecho hacia adelante y la pierna izquierda atrás. Repite con la pierna y brazo contrario y alterna los movimientos"
+                ,"Colócate en posición de lucha, con los puños hacia arriba y las palmas enfrentadas. Rota las caderas a la izquierda y extiende el brazo derecho girando el antebrazo, de modo que las uñas apunten al suelo y el brazo quede alineado con el hombro. Vuelve a la posición inicial y repite con el otro lado"
+                ,"Camina con tus manos hacia adelante hasta que estés apoyando todo tu peso en tus manos y dedos de los pies. Tu cuerpo debe hacer una línea recta y tus manos deben alinearse con tus hombros. Camina tus pies hacia adelante para encontrarte con tus manos."
+                ,"Acuéstate boca abajo y coloque las manos en el suelo al ancho de los hombros. Levanta el cuerpo hacia arriba y ve enderezando los brazos. El cuerpo debe apoyarse únicamente sobre las manos y los dedos de los pies. Bajamos el cuerpo doblando los brazos, volvemos a la posición inicial extendiendo los brazos."
+                ,"3 sets de 6 reps"
                 ,"2 sets de 6 reps"
                 ,"4 sets de 4 reps"
                 ,"3 sets de 12 reps"
@@ -284,13 +287,13 @@ public class RutinasEjercicio extends AppCompatActivity {
                 "Triceps en suelo"
                 ,"Fondos militares"
                 ,brazo11
-        ,"De pie con los pies paralelos, separados a la anchura de las caderas. Apoya las manos contra la pared. Exhala por la boca contrayendo el abdomen mientras flexionas los codos apuntando hacia el suelo y acercas el tronco en bloque hacia la pared. Inhala estirando lentamente los brazos para regresar a la posición inicial."
-        ,"Colócate en posición de plancha frontal, ahora lleva el brazo derecho hacia adelante y la pierna izquierda atrás. Repite con la pierna y brazo contrario y alterna los movimientos"
-        ,"Sentados en una silla colocando las manos al lado del cuerpo con los dedos mirando hacia delante, luego nos sostenemos sobre los brazos bajando los glúteos hasta que tus codos queden lo más cerca de un ángulo de 90 grados. Empujamos ejerciendo fuerza con los tríceps para volver a la posición inicial de manera que los brazos queden estirados."
-        ,"Acuéstate boca abajo y coloque las manos en el suelo al ancho de los hombros. Levanta el cuerpo hacia arriba y ve enderezando los brazos. El cuerpo debe apoyarse únicamente sobre las manos y los dedos de los pies. Bajamos el cuerpo doblando los brazos, volvemos a la posición inicial extendiendo los brazos."
-        ,"Pon tus manos bajo los hombros en el piso. Estira los brazos y mantén una ligera curva en los codos. Dobla lentamente los codos y baja el torso hasta que tus brazos lleguen a un ángulo de 90º. Una vez que has llegado a tu tope, empuja con las manos y vuelve a levantarte a la posición original"
-        ,"Colócate en posición de lucha, con los puños hacia arriba y las palmas enfrentadas. Rota las caderas a la izquierda y extiende el brazo derecho girando el antebrazo, de modo que las uñas apunten al suelo y el brazo quede alineado con el hombro. Vuelve a la posición inicial y repite con el otro lado"
-        ,"3 sets de 12 reps"
+                ,"De pie con los pies paralelos, separados a la anchura de las caderas. Apoya las manos contra la pared. Exhala por la boca contrayendo el abdomen mientras flexionas los codos apuntando hacia el suelo y acercas el tronco en bloque hacia la pared. Inhala estirando lentamente los brazos para regresar a la posición inicial."
+                ,"Colócate en posición de plancha frontal, ahora lleva el brazo derecho hacia adelante y la pierna izquierda atrás. Repite con la pierna y brazo contrario y alterna los movimientos"
+                ,"Sentados en una silla colocando las manos al lado del cuerpo con los dedos mirando hacia delante, luego nos sostenemos sobre los brazos bajando los glúteos hasta que tus codos queden lo más cerca de un ángulo de 90 grados. Empujamos ejerciendo fuerza con los tríceps para volver a la posición inicial de manera que los brazos queden estirados."
+                ,"Acuéstate boca abajo y coloque las manos en el suelo al ancho de los hombros. Levanta el cuerpo hacia arriba y ve enderezando los brazos. El cuerpo debe apoyarse únicamente sobre las manos y los dedos de los pies. Bajamos el cuerpo doblando los brazos, volvemos a la posición inicial extendiendo los brazos."
+                ,"Pon tus manos bajo los hombros en el piso. Estira los brazos y mantén una ligera curva en los codos. Dobla lentamente los codos y baja el torso hasta que tus brazos lleguen a un ángulo de 90º. Una vez que has llegado a tu tope, empuja con las manos y vuelve a levantarte a la posición original"
+                ,"Colócate en posición de lucha, con los puños hacia arriba y las palmas enfrentadas. Rota las caderas a la izquierda y extiende el brazo derecho girando el antebrazo, de modo que las uñas apunten al suelo y el brazo quede alineado con el hombro. Vuelve a la posición inicial y repite con el otro lado"
+                ,"3 sets de 12 reps"
                 ,"3 sets de 10 reps"
                 ,"3 sets de 10 reps"
                 ,"2 sets de 8 reps"
@@ -311,16 +314,16 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,brazo12
                 ,"Colócate en posición de lucha, con los puños hacia arriba y las palmas enfrentadas. Rota las caderas a la izquierda y extiende el brazo derecho girando el antebrazo, de modo que las uñas apunten al suelo y el brazo quede alineado con el hombro. Vuelve a la posición inicial y repite con el otro lado"
                 ,"Empiece en posición de flexión. Completa una flexión de brazos completa. En la parte superior de la flexión de brazos, gira el brazo desde el centro directamente hacia arriba en una tabla lateral. Gira en los dedos de los pies para permitirte rotar en el tablón lateral. devuélvela al suelo y repite en la izquierda"
-        ,"Empieza con el cuerpo erguido. Se debe agachar y apoyar las manos en el suelo y enseguida estirar los pies hacia atrás, dejando los brazos a la altura del hombro. A continuación, se realiza una flexión normal e impulsa los pies hacia adelante. Ahora realiza un salto extendiendo los brazos hacia arriba"
-        ,"Colócate en posición de lucha, con los puños hacia arriba y las palmas enfrentadas. Rota las caderas a la izquierda y extiende el brazo derecho girando el antebrazo, de modo que las uñas apunten al suelo y el brazo quede alineado con el hombro. Vuelve a la posición inicial y repite con el otro lado"
-        ,"Mantener tu abdomen bien apretato. Brinca lo mas alto que puedas, tus puntas de los pies deben caer primero y despues tu talón"
-        ,"Inicia totalmente derecho, luego lleva las manos justo delante de los pies y camina con las manos hasta tener el cuerpo totalmente estirado, te devuelves de la misma forma"
-        ,"4 sets de 12 reps"
-        ,"3 sets de 12 reps"
-        ,"3 sets de 15 reps"
-        ,"4 sets de 8 reps"
-        ,"4 sets de 12 reps"
-        ,"3 sets de 10 reps");
+                ,"Empieza con el cuerpo erguido. Se debe agachar y apoyar las manos en el suelo y enseguida estirar los pies hacia atrás, dejando los brazos a la altura del hombro. A continuación, se realiza una flexión normal e impulsa los pies hacia adelante. Ahora realiza un salto extendiendo los brazos hacia arriba"
+                ,"Colócate en posición de lucha, con los puños hacia arriba y las palmas enfrentadas. Rota las caderas a la izquierda y extiende el brazo derecho girando el antebrazo, de modo que las uñas apunten al suelo y el brazo quede alineado con el hombro. Vuelve a la posición inicial y repite con el otro lado"
+                ,"Mantener tu abdomen bien apretato. Brinca lo mas alto que puedas, tus puntas de los pies deben caer primero y despues tu talón"
+                ,"Inicia totalmente derecho, luego lleva las manos justo delante de los pies y camina con las manos hasta tener el cuerpo totalmente estirado, te devuelves de la misma forma"
+                ,"4 sets de 12 reps"
+                ,"3 sets de 12 reps"
+                ,"3 sets de 15 reps"
+                ,"4 sets de 8 reps"
+                ,"4 sets de 12 reps"
+                ,"3 sets de 10 reps");
 
 
         referencia.child(brazo12).setValue(ejercicioAux12);
@@ -484,8 +487,7 @@ public class RutinasEjercicio extends AppCompatActivity {
                 ,"Donkey kicks Derecha"
                 , "Sentadilla en pared"
                 ,"Sentadillas"
-                ,pierna19
-                , "Mantener la cabeza horizontal, colocar los pies al ancho de los hombros y flexionar la rodilla sin sobrepasar la punta de los pies",
+                ,pierna19, "Mantener la cabeza horizontal, colocar los pies al ancho de los hombros y flexionar la rodilla sin sobrepasar la punta de los pies",
                 "Ubique las manos en la cintura y separe los pies al ancho de los hombros. Despues deslice un pie hacia atras y baje la cadera de manera que la rodilla quede flexionada en un angulo de 90 grados",
                 "Ubiquese en cuatro puntos con las rodillas apoyadas en el suelo y los brazos separados al ancho de los hombros. Deje la pierna derecha en su posicion y eleve la pierna izquierda flexionada y apriee el gluteo",
                 "Ubiquese en cuatro puntos con las rodillas apoyadas en el suelo y los brazos separados al ancho de los hombros. Deje la pierna izquierda en su posicion y eleve la pierna derecha flexionada y apriee el gluteo",
@@ -1098,8 +1100,42 @@ public class RutinasEjercicio extends AppCompatActivity {
         ejercicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Map<String,Object> rutina = new HashMap<String,Object>();
                 //Toast.makeText(RutinasEjercicio.this,":"+a,Toast.LENGTH_LONG).show();
                 if(a == 1){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento pecho principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga = referencia.orderByChild("nombre").equalTo(pecho1);
                     checkYoga.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -1191,6 +1227,39 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==2){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento pecho intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga2 = referencia.orderByChild("nombre").equalTo(pecho2);
                     checkYoga2.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -1281,6 +1350,39 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==3){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento pecho avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga3 = referencia.orderByChild("nombre").equalTo(pecho3);
                     checkYoga3.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -1372,6 +1474,39 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==4){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento pecho principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga4 = referencia.orderByChild("nombre").equalTo(pecho4);
                     checkYoga4.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -1464,6 +1599,39 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==5){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento pecho intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga5 = referencia.orderByChild("nombre").equalTo(pecho5);
                     checkYoga5.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -1555,6 +1723,39 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==6){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento pecho avanzado");
+                                rutina.put("Duracion", "45 a 55 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga6 = referencia.orderByChild("nombre").equalTo(pecho6);
                     checkYoga6.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -1646,6 +1847,39 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==7){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso pecho principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga7 = referencia.orderByChild("nombre").equalTo(pecho7);
                     checkYoga7.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -1736,12 +1970,45 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==8){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso pecho intermedio");
+                                rutina.put("Duracion", "40 a 45 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga8 = referencia.orderByChild("nombre").equalTo(pecho8);
                     checkYoga8.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(pecho8).child("ejercicio1").getValue(String.class);
@@ -1825,12 +2092,45 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a ==9){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso pecho avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPecho").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkYoga9 = referencia.orderByChild("nombre").equalTo(pecho9);
                     checkYoga9.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(pecho9).child("ejercicio1").getValue(String.class);
@@ -1920,14 +2220,47 @@ public class RutinasEjercicio extends AppCompatActivity {
         ejercicio2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(a ==1){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento brazo principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo1 = referencia.orderByChild("nombre").equalTo(brazo10);
                     checkBrazo1.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(brazo10).child("ejercicio1").getValue(String.class);
@@ -2012,6 +2345,40 @@ public class RutinasEjercicio extends AppCompatActivity {
 
                 }
                 else if(a==2){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento brazo intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo2 = referencia.orderByChild("nombre").equalTo(brazo11);
                     checkBrazo2.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2102,12 +2469,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==3){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento brazo avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo3 = referencia.orderByChild("nombre").equalTo(brazo12);
                     checkBrazo3.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(brazo12).child("ejercicio1").getValue(String.class);
@@ -2192,6 +2593,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==4){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento brazo principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo4 = referencia.orderByChild("nombre").equalTo(brazo13);
                     checkBrazo4.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2283,6 +2718,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==5){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento brazo intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo5 = referencia.orderByChild("nombre").equalTo(brazo14);
                     checkBrazo5.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2373,6 +2842,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==6){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento brazo avanzado");
+                                rutina.put("Duracion", "45 a 55 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo6 = referencia.orderByChild("nombre").equalTo(brazo15);
                     checkBrazo6.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2462,6 +2965,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==7){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso brazo principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo7 = referencia.orderByChild("nombre").equalTo(brazo16);
                     checkBrazo7.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2545,6 +3082,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==8){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso brazo intermedio");
+                                rutina.put("Duracion", "40 a 45 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo8 = referencia.orderByChild("nombre").equalTo(brazo17);
                     checkBrazo8.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2634,12 +3205,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==9){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso brazo avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nBrazo").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkBrazo9 = referencia.orderByChild("nombre").equalTo(brazo18);
                     checkBrazo9.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(brazo18).child("ejercicio1").getValue(String.class);
@@ -2729,8 +3334,41 @@ public class RutinasEjercicio extends AppCompatActivity {
         ejercicio3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(a==1){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Pierna principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna1 = referencia.orderByChild("nombre").equalTo(pierna19);
                     checkPierna1.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2819,6 +3457,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                     });
                 }
                 else if(a==2){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento pierna intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna2 = referencia.orderByChild("nombre").equalTo(pierna20);
                     checkPierna2.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2903,6 +3575,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==3){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento pierna avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna3 = referencia.orderByChild("nombre").equalTo(pierna21);
                     checkPierna3.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -2992,12 +3698,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==4){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento pierna principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna4 = referencia.orderByChild("nombre").equalTo(pierna22);
                     checkPierna4.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(pierna22).child("ejercicio1").getValue(String.class);
@@ -3082,12 +3822,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==5){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento pierna intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna5 = referencia.orderByChild("nombre").equalTo(pierna23);
                     checkPierna5.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(pierna23).child("ejercicio1").getValue(String.class);
@@ -3172,6 +3946,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==6){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento pierna avanzado");
+                                rutina.put("Duracion", "45 a 55 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna6 = referencia.orderByChild("nombre").equalTo(pierna24);
                     checkPierna6.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3262,6 +4070,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==7){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso pierna principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna7 = referencia.orderByChild("nombre").equalTo(pierna25);
                     checkPierna7.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3351,6 +4193,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==8){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso pierna intermedio");
+                                rutina.put("Duracion", "40 a 45 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna8 = referencia.orderByChild("nombre").equalTo(pierna26);
                     checkPierna8.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3440,6 +4316,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==9){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso pierna avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nPierna").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkPierna9 = referencia.orderByChild("nombre").equalTo(pierna27);
                     checkPierna9.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3534,8 +4444,41 @@ public class RutinasEjercicio extends AppCompatActivity {
         ejercicio4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(a==1){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento abdomen principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs1 = referencia.orderByChild("nombre").equalTo(abs28);
                     checkAbs1.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3625,6 +4568,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==2){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento abdomen intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs2 = referencia.orderByChild("nombre").equalTo(abs29);
                     checkAbs2.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3715,6 +4692,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==3){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento abdomen avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs3 = referencia.orderByChild("nombre").equalTo(abs30);
                     checkAbs3.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3805,12 +4816,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==4){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento abdomen principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs4 = referencia.orderByChild("nombre").equalTo(abs31);
                     checkAbs4.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(abs31).child("ejercicio1").getValue(String.class);
@@ -3895,6 +4940,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==5){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento abdomen intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs5 = referencia.orderByChild("nombre").equalTo(abs32);
                     checkAbs5.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -3985,6 +5064,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==6){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento abdomen avanzado");
+                                rutina.put("Duracion", "45 a 55 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs6 = referencia.orderByChild("nombre").equalTo(abs33);
                     checkAbs6.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -4077,12 +5190,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==7){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso abdomen principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs7 = referencia.orderByChild("nombre").equalTo(abs34);
                     checkAbs7.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(abs34).child("ejercicio1").getValue(String.class);
@@ -4168,6 +5315,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==8){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso abdomen intermedio");
+                                rutina.put("Duracion", "40 a 45 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs8 = referencia.orderByChild("nombre").equalTo(abs35);
                     checkAbs8.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -4258,6 +5439,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==9){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso abdomen avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nAbdomen").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkAbs9 = referencia.orderByChild("nombre").equalTo(abs36);
                     checkAbs9.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -4352,8 +5567,41 @@ public class RutinasEjercicio extends AppCompatActivity {
         ejercicio5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(a==1){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento hombro y espalda principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro1 = referencia.orderByChild("nombre").equalTo(hombro37);
                     checkHombro1.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -4442,6 +5690,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                     });
                 }
                 else if(a==2){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento hombro y espalda intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro2 = referencia.orderByChild("nombre").equalTo(hombro38);
                     checkHombro2.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -4531,12 +5813,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==3){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Fortalecimiento hombro y espalda avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro3 = referencia.orderByChild("nombre").equalTo(hombro39);
                     checkHombro3.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(hombro39).child("ejercicio1").getValue(String.class);
@@ -4621,12 +5937,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==4){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento hombro y espalda principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro4 = referencia.orderByChild("nombre").equalTo(hombro40);
                     checkHombro4.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(hombro40).child("ejercicio1").getValue(String.class);
@@ -4710,6 +6060,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==5){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento hombro y espalda intermedio");
+                                rutina.put("Duracion", "30 a 40 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro5 = referencia.orderByChild("nombre").equalTo(hombro41);
                     checkHombro5.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -4799,6 +6183,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==6){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Acondicionamiento hombro y espalda avanzado");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro6 = referencia.orderByChild("nombre").equalTo(hombro42);
                     checkHombro6.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -4889,12 +6307,46 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==7){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso hombro y espalda principiante");
+                                rutina.put("Duracion", "25 a 35 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro7 = referencia.orderByChild("nombre").equalTo(hombro44);
                     checkHombro7.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if(dataSnapshot.exists()){
-                               // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(RutinasEjercicio.this, ":llegue", Toast.LENGTH_SHORT).show();
                                 final String cant1,cant2,cant3,cant4,cant5,cant6,desc1,desc2,desc3,desc4,desc5,desc6,tiempo1,tiempo2,tiempo3,tiempo4
                                         ,tiempo5,tiempo6;
                                 cant1 = dataSnapshot.child(hombro44).child("ejercicio1").getValue(String.class);
@@ -4978,6 +6430,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==8){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso hombro y espalda intermedio");
+                                rutina.put("Duracion", "40 a 45 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro8 = referencia.orderByChild("nombre").equalTo(hombro45);
                     checkHombro8.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -5067,6 +6553,40 @@ public class RutinasEjercicio extends AppCompatActivity {
                 }
 
                 else if(a==9){
+                    baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                        Map<String,Object> rutina = new HashMap<String,Object>();
+                        Date fecha = new Date();
+                        int flag = 0;
+                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                            if(flag == 0)
+                            {
+                                rutina.put("Nombre ejercicio", "Bajar de peso hombro y espalda avanzado");
+                                rutina.put("Duracion", "40 a 50 minutos");
+                                rutina.put("Fecha de realización", fecha.toString());
+                                //se obtiene el numeral de hijos que tiene
+                                //i+=1;
+                                int consecutivo = 0;
+                                int nZona = 0;
+                                consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPecho").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nBrazo").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nPierna").getValue().toString())
+                                        + Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nAbdomen").getValue().toString())
+                                        +Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                consecutivo += 1;
+                                nZona = Integer.parseInt(datasnapshot.child(usuarios).child("nEjercicios").child("nHombro").getValue().toString());
+                                nZona++;
+                                flag++;
+                                baseDatos.child("Usuarios").child(usuarios).child("nEjercicios").child("nHombro").setValue(nZona);
+                                baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                            }
+                            //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                     Query checkHombro9 = referencia.orderByChild("nombre").equalTo(hombro46);
                     checkHombro9.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

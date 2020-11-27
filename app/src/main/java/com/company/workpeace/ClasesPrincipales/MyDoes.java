@@ -23,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+//CLASE QUE PERMITE CREAR LOS RECORDATORIOS A UN USUARIO
+
 public class MyDoes extends AppCompatActivity {
 
     TextView titlepage, subtitlepage, endpage;
@@ -32,7 +34,8 @@ public class MyDoes extends AppCompatActivity {
     RecyclerView ourdoes;
     ArrayList<MyDoesAux> list;
     DoesAdapter doesAdapter;
-    String usuario;
+    String usuario, nombre, clave, correo;
+    DatabaseReference baseDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +54,10 @@ public class MyDoes extends AppCompatActivity {
         endpage = findViewById(R.id.endpage);
 
         btnAddNew = findViewById(R.id.btnAddNew);
+        baseDatos = FirebaseDatabase.getInstance().getReference();
 
 
-        btnAddNew.setOnClickListener(new View.OnClickListener() {
+        btnAddNew.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent a = new Intent(MyDoes.this, NewTaskAct.class);
@@ -61,7 +65,6 @@ public class MyDoes extends AppCompatActivity {
                 startActivity(a);
             }
         });
-
 
         ourdoes = findViewById(R.id.ourdoes);
         ourdoes.setLayoutManager(new LinearLayoutManager(this));
@@ -87,6 +90,29 @@ public class MyDoes extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
             }
 
+        });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        baseDatos.child("Usuarios").child(usuario).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Intent home = new Intent(MyDoes.this,Init.class);
+                nombre = snapshot.child("nombre").getValue().toString();
+                clave = snapshot.child("clave").getValue().toString();
+                correo = snapshot.child("email").getValue().toString();
+                home.putExtra("usuario", usuario);
+                home.putExtra("nombre", nombre);
+                home.putExtra("clave", clave);
+                home.putExtra("email", correo);
+                startActivity(home);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }

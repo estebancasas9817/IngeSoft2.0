@@ -19,6 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Random;
 
+
+// CLASE QUE PERMITE AL USUARIO CREAR UN NUEVO EJERCICIO DE SU 
+// PROPIA RUTINA
+
+
 public class CrearMiRutina extends AppCompatActivity {
 
     TextView titlepageRutina, addtitleMiRutina, addHoraRutina, adddateMiRutina;

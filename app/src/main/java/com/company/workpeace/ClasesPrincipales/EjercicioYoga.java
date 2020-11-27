@@ -15,6 +15,9 @@ import com.company.workpeace.R;
 
 import java.util.Locale;
 
+// CLASE QUE PERMITE LEER DATOS DE LOS EJERCICIOS DE YOGA
+// DESDE LA BASE DE DATOS
+
 public class EjercicioYoga extends AppCompatActivity {
     TextView intropage, subintropage, fitonetitle, fitonedesc, timerValue, btnexercise;
     TextView nombreEjerYoga, tiempoEjerYoga;

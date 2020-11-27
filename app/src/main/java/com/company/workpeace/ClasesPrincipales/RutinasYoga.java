@@ -21,6 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
+// CLASE QUE PERMITE AL USUARIO DEJAR VER LAS RUTINAS DE
+// YOGA QUE SE TIENEN EN LA CASE DE DATOS
+
 public class RutinasYoga extends AppCompatActivity {
     TextView ejercicio,ejercicio2,ejercicio3,ejercicio4,ejercicio5,ejercicio6,ejercicio7,ejercicio8, nombreRutina;
     FirebaseDatabase rutaMarcas;

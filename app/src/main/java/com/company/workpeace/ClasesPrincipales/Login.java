@@ -32,6 +32,8 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
+// CLASE QUE PERMITE AL USUARIO HACER LOGGIN DESDE LA BASE DE DATOS
+
 public class Login extends AppCompatActivity {
     TextInputLayout usuario;
     TextInputLayout psw;
@@ -166,7 +168,7 @@ public class Login extends AppCompatActivity {
 
                                                     //Toast.makeText(Login.this,"Bienvenido de vuelta",Toast.LENGTH_SHORT).show();
 
-                                                    Intent sig = new Intent(Login.this,Probando.class);
+                                                    Intent sig = new Intent(Login.this,Init.class);
                                                     //Guardar el usuario para mostrar los datos de ese usuario en otra pantalla y solo los de ese usuario
                                                     sig.putExtra("usuario",usuarioBD);
                                                     sig.putExtra("email",emailDB);
@@ -197,9 +199,6 @@ public class Login extends AppCompatActivity {
 
                                         }
 
-
-
-
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -214,19 +213,11 @@ public class Login extends AppCompatActivity {
 
                                     }
                                 }
-
                                 // ...
                             }
                         });
-
             }
         });
-
-
-
-
-
-
         //CAMBIAR A PANTALLA REGISTRO
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,17 +226,7 @@ public class Login extends AppCompatActivity {
                 startActivity(siguiente);
             }
         });
-
     }
-
-
-
-
-
-
-
-
-
 
 }
 

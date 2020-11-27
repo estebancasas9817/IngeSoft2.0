@@ -9,6 +9,8 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
+// ESTA CLASE ME GUARDA LOS DATOS DE EL AÑO, EL MES Y EL DIA DE MI RECORDATORIO.
+
 public class DatePickerFragment extends DialogFragment {
     @NonNull
     @Override

@@ -1,5 +1,8 @@
 package com.company.workpeace.ClasesAuxiliares.Firebase;
 
+
+// CLASE AUXILIAR QUE ME GUARDA LAS MARCAS PERSONALES DEL USUARIO, PARA LUEGO SUBIRLAS Y LA BASE DE DATOS.
+
 public class MarcasAux {
     String nuevaMarca1,nuevaMarca2,nuevaMarca3,nuevaMarca4,nuevaMarca5,nuevaMarca6,nuevaMarca7,nuevaMarca8;
     String marcaAnterior1,marcaAnterior2,marcaAnterior3,marcaAnterior4,marcaAnterior5,marcaAnterior6,marcaAnterior7,marcaAnterior8;

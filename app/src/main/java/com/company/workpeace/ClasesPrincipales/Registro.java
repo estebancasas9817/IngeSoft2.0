@@ -27,7 +27,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
+// CLASE QUE PERMITE REGISTRARSE AL USUARIO
+// HACIENDO USO DE LOS SERVICIOS DE FIREBASE
+// AUTENTICACION Y REGISTRO EN LA BASE DE DATOS.
 public class Registro extends AppCompatActivity {
     // DECLARACION DE VARIABLES PARA EL REGISTRO DEL USUARIO
     TextInputLayout nUsuario;

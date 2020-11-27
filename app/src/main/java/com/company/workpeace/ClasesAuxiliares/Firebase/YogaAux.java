@@ -1,5 +1,8 @@
 package com.company.workpeace.ClasesAuxiliares.Firebase;
 
+// CLASE AUXILIAR QUE ME MOSTRARA LOS EJERCICIOS DE YOGA DESDE LA BASE DE DATOS
+
+
 public class YogaAux {
     String pose1,pose2,pose3,pose4,pose5,pose6,pose7,pose8,nombre,tiempoTotal,tiempoPose;
     String descripcion1,descripcion2,descripcion3,descripcion4,descripcion5,descripcion6,descripcion7,descripcion8;

@@ -1,5 +1,8 @@
 package com.company.workpeace.ClasesAuxiliares.Firebase;
 
+// CLASE QUE ME GUARDA LOS EJERCICIOS DE LA RUTINAS PERSONALIZADA
+// PARA LUEGO SUBIRLAS A LA BASE DE DATOS.
+
 public class MiRutinaAux {
 
     String nombre, series, repeticiones, descripcion;

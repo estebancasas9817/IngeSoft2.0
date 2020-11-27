@@ -1,5 +1,10 @@
 package com.company.workpeace.ClasesAuxiliares.Firebase;
 
+
+// CLASE AUXILIAR QUE ME VA A GUARDAR LOS DATOS DE USUARIO 
+// PARA LUEGO SUBIRLOS A LA BASE DE DATOS
+
+
 public class UsuariosAux {
     String usuario, nombre, email, clave,genero;
     int edad;

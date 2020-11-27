@@ -18,6 +18,10 @@ import com.company.workpeace.R;
 
 import java.util.concurrent.TimeUnit;
 
+
+// CLASE QUE PERMITE AL USUARIO ESCUCHAR EL AUDIO DE
+// UNA SESION DE MEDITACION
+
 public class EjercicioMed extends AppCompatActivity {
 
     Button playBtn;

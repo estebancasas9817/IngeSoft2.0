@@ -25,6 +25,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+// CLASE QUE PERMITE VER EJERCICIOS CREADOS POR EL USUARIO
+
+
 public class Rutinas extends AppCompatActivity {
 
     TextView titlepageRutina, subtitlepageRutina, endpageRutina;
@@ -34,7 +37,8 @@ public class Rutinas extends AppCompatActivity {
     RecyclerView ourdoesRutina;
     ArrayList<MiRutinaAux> list;
     DoesAdapterRutinas doesAdapterRutina;
-    String usuario;
+    String usuario, nombre, correo, clave;
+    DatabaseReference baseDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class Rutinas extends AppCompatActivity {
         endpageRutina = findViewById(R.id.endpageRutina);
 
         btnAddNewRutina = findViewById(R.id.btnAddNewRutina);
+        baseDatos = FirebaseDatabase.getInstance().getReference();
 
 
         btnAddNewRutina.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +94,29 @@ public class Rutinas extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
             }
 
+        });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        baseDatos.child("Usuarios").child(usuario).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Intent home = new Intent(Rutinas.this,Init.class);
+                nombre = snapshot.child("nombre").getValue().toString();
+                clave = snapshot.child("clave").getValue().toString();
+                correo = snapshot.child("email").getValue().toString();
+                home.putExtra("usuario", usuario);
+                home.putExtra("nombre", nombre);
+                home.putExtra("clave", clave);
+                home.putExtra("email", correo);
+                startActivity(home);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }

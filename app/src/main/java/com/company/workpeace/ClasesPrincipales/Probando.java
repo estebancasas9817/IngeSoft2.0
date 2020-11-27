@@ -19,6 +19,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+// CLASE QUE PERMITE VISUALIZAR Y ACTUALIZAR LAS MEDIDAS CORPORALES DEL USUARIO
+
 public class Probando extends AppCompatActivity {
 
     TextInputEditText medida1,medida2,medida3,medida4,medida5,medida6,medida7,medida8;

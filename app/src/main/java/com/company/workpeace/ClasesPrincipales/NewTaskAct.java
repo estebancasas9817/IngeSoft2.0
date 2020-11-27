@@ -34,6 +34,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+// CLASE QUE PERMITE CREAR UN RECORDATORIO
+
+
 public class NewTaskAct extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     TextView titlepage, addtitle, adddesc, adddate;

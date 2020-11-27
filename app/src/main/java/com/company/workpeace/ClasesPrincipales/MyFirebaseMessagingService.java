@@ -9,6 +9,10 @@ import com.company.workpeace.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+//CLASE PARA INVOCAR EL CANAL PARA MANDAR PUSH NOTIFICATIONS
+// VIA FIREBASE
+
+
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override

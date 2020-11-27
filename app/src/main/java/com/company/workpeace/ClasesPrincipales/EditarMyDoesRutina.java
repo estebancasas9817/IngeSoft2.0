@@ -32,6 +32,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+
+// CLASE QUE PERMITE AL USUARIO EDITAR SUS
+// EJERCICIOS PERSONALIZADOS.
 public class EditarMyDoesRutina extends AppCompatActivity {
 
     EditText titulo, desc, fecha, editarHora;
@@ -213,14 +216,12 @@ public class EditarMyDoesRutina extends AppCompatActivity {
         }
 
         titulo.setText(getIntent().getStringExtra("titledoesRutina"));
-        desc.setText(getIntent().getStringExtra("descdoesRutina"));
         fecha.setText(getIntent().getStringExtra("seriesRutina"));
         editarHora.setText(getIntent().getStringExtra("getRepsRutina"));
-
         final String series =fecha.getText().toString();
         final String reps =editarHora.getText().toString();
-        final String descripcion = getIntent().getStringExtra("descdoesRutina");
         final String keykeydoes = getIntent().getStringExtra("keydoesRutina");
+        final String descripcion = getIntent().getStringExtra("descdoesRutina");
         final String usuario = getIntent().getStringExtra("usernameRutina");
         final int elNumero = getIntent().getIntExtra("getNumero",0);
 
@@ -280,7 +281,6 @@ public class EditarMyDoesRutina extends AppCompatActivity {
 
                 Intent intent = new Intent(EditarMyDoesRutina.this,SeriesPersonalizadas.class);
                 String nombreEjercicio = titulo.getText().toString();
-                String descripcionEjercicio = descripcion;
                 String cantidadReps = editarHora.getText().toString();
                 String cantidadSets = fecha.getText().toString();
                 intent.putExtra("nombreEjercicioP",nombreEjercicio);
@@ -300,9 +300,5 @@ public class EditarMyDoesRutina extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 }

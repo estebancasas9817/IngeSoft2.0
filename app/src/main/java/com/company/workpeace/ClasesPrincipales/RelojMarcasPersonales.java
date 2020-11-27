@@ -15,6 +15,9 @@ import com.company.workpeace.R;
 
 import java.util.Locale;
 
+
+// CLASE QUE PERMITE CREAR UN RELOJ DE TIEMPO 
+
 public class RelojMarcasPersonales extends AppCompatActivity {
     private static long START_TIME_IN_MILLIS = 60000;
     private CountDownTimer countDownTimer;

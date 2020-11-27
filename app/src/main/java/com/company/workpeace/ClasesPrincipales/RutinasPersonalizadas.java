@@ -19,10 +19,17 @@ import com.company.workpeace.ClasesAuxiliares.Firebase.MiRutinaAux;
 import com.company.workpeace.ClasesAuxiliares.Firebase.MyDoesAux;
 import com.company.workpeace.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
+
+//CLASE QUE CARGA UN BANCO DE EJERCICIOS DESDE FIREBASE
+// PARA QUE USUARIO PUEDA ESCOGER QUE EJERCICIO CREAR EN SU
+// RUTINA
 
 public class RutinasPersonalizadas extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,8 +58,8 @@ public class RutinasPersonalizadas extends AppCompatActivity implements Navigati
 
     TextView hombro1,hombro2,hombro3,hombro4,hombro5,hombro6,hombro7,hombro8,hombro9;
 
-    DatabaseReference reference;
-    String usuario;
+    DatabaseReference baseDatos;
+    String usuario, nombre, clave, correo;
 
     Integer doesNum = new Random().nextInt();
     String keydoes = Integer.toString(doesNum);
@@ -67,6 +74,7 @@ public class RutinasPersonalizadas extends AppCompatActivity implements Navigati
         menuIcon = findViewById(R.id.menu_icon);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
+        baseDatos = FirebaseDatabase.getInstance().getReference();
 
         Intent intent = getIntent();
 
@@ -1256,7 +1264,6 @@ public class RutinasPersonalizadas extends AppCompatActivity implements Navigati
             }
         });
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         String usuario,correo,clave,nombre;

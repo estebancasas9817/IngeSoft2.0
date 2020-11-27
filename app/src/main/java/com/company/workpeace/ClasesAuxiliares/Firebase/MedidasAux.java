@@ -1,5 +1,8 @@
 package com.company.workpeace.ClasesAuxiliares.Firebase;
 
+
+// CLASE QUE ME GUARDA MIS MEDIDAS PARA LUEGO SUBIRLAS A LA BASE DE DATOS.
+
 public class MedidasAux {
 
     String nuevaMedida,nuevaMedida2,nuevaMedida3,nuevaMedida4,nuevaMedida5,nuevaMedida6,nuevaMedida7,nuevaMedida8;

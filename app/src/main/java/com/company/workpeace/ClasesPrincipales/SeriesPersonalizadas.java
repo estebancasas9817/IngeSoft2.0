@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import com.company.workpeace.R;
 
+// PANTALLA QUE PERMITE AGREGAR A LAS RUTINAS PERSONALIZADAS
+// SUS REPETICIONES Y SERIES AL GUSTO DEL USUARIO
+
+
 public class SeriesPersonalizadas extends AppCompatActivity {
 
     ImageView imgPersonalizada;

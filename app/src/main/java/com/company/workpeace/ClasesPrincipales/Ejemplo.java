@@ -13,6 +13,10 @@ import com.company.workpeace.R;
 
 import java.util.Locale;
 
+// CLASE QUE PERMITE LEER LOS DATOS DE UN EJERCICIO
+// DESDE LA BASE DE DATOS
+
+
 public class Ejemplo extends AppCompatActivity {
     TextView intropage, subintropage, fitonetitle, fitonedesc, timerValue, btnexercise;
     View divpage, bgprogress, btnempezar;

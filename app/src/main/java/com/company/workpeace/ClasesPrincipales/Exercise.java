@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import com.company.workpeace.R;
 
+// CLASE QUE PERMITE LEER DESDE LA BASE DE DATOS
+// LAS ZONAS MUSCULARES
+
 public class Exercise extends AppCompatActivity {
 
     TextView ejercicio,ejercicio2,ejercicio3,ejercicio4,ejercicio5,ejercicio6,introPgage;

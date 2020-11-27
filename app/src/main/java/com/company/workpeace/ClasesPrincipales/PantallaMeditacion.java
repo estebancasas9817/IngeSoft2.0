@@ -16,6 +16,18 @@ import android.widget.TextView;
 
 import com.company.workpeace.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+// CLASE QUE PERMITE VISUALIZAR LOS TIPOS DE SESIONES
+// DE MEDITACION QUE SE TIENEN DESDE LA BASE DE DATOS.
 
 public class PantallaMeditacion extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -26,6 +38,7 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
     ProgressBar progressBar;
 
     TextView med1,med2,med3,med4,med5,med6,med7,med8,med9,med10,med11,med12;
+    DatabaseReference baseDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +64,7 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         navigationDrawer();
-
+        baseDatos = FirebaseDatabase.getInstance().getReference();
         final String usuarios,correos,claves,nombres;
 
         Intent intent = getIntent();
@@ -63,6 +76,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación para la ansiedad principiante");
+                            rutina.put("Duracion", "6 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation.putExtra("med",1);
@@ -77,6 +117,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación para la ansiedad intermedio");
+                            rutina.put("Duracion", "10 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation2 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation2.putExtra("med",2);
@@ -92,6 +159,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación para la ansiedad avanzado");
+                            rutina.put("Duracion", "20 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation3 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation3.putExtra("med",3);
@@ -107,6 +201,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación mindfulness principiante");
+                            rutina.put("Duracion", "6 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation4 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation4.putExtra("med",4);
@@ -122,6 +243,32 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación mindfulness intermedio");
+                            rutina.put("Duracion", "12 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation5 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation5.putExtra("med",5);
@@ -137,6 +284,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación mindfulness avanzado");
+                            rutina.put("Duracion", "15 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation6 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation6.putExtra("med",6);
@@ -152,6 +326,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación sueño profundo principiante");
+                            rutina.put("Duracion", "11 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation7 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation7.putExtra("med",7);
@@ -167,6 +368,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación sueño profundo intermedio");
+                            rutina.put("Duracion", "14 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation8 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation8.putExtra("med",8);
@@ -182,6 +410,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación sueño profundo principiante");
+                            rutina.put("Duracion", "15 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation9 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation9.putExtra("med",9);
@@ -197,6 +452,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación para dolor físico o emocional principiante");
+                            rutina.put("Duracion", "12 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation10 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation10.putExtra("med",10);
@@ -212,6 +494,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación para dolor físico o emocional intermedio");
+                            rutina.put("Duracion", "13 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation11 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation11.putExtra("med",11);
@@ -226,6 +535,33 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
         med12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                baseDatos.child("Usuarios").addValueEventListener(new ValueEventListener() {
+                    Map<String,Object> rutina = new HashMap<String,Object>();
+                    Date fecha = new Date();
+                    int flag = 0;
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                        if(flag == 0)
+                        {
+                            rutina.put("Nombre yoga", "Meditación para dolor físico o emocional avanzado");
+                            rutina.put("Duracion", "16 minutos");
+                            rutina.put("Fecha de realización", fecha.toString());
+                            //se obtiene el numeral de hijos que tiene
+                            //i+=1;
+                            int consecutivo = 0;
+                            consecutivo =  Integer.parseInt(datasnapshot.child(usuarios).child("nMeditaciones").getValue().toString());
+                            consecutivo += 1;
+                            flag++;
+                            baseDatos.child("Usuarios").child(usuarios).child("nMeditaciones").setValue(consecutivo);
+                            baseDatos.child("HistorialMeditaciones").child(usuarios).child(String.valueOf(consecutivo)).updateChildren(rutina);
+                        }
+                        //baseDatos.child("HistorialWorkouts").child(usuarios).child(String.valueOf(i)).updateChildren(rutina);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
                 progressBar.setVisibility(View.VISIBLE);
                 Intent meditation12 = new Intent(PantallaMeditacion.this,EjercicioMed.class);
                 meditation12.putExtra("med",12);
@@ -279,10 +615,6 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
                 si.putExtra("email",correo);
                 startActivity(si);
                 break;
-            case R.id.nav_peso_y_medidas:
-                Intent peso = new Intent(PantallaMeditacion.this,Probando.class);
-                startActivity(peso);
-                break;
             case R.id.nav_home:
                 Intent home = new Intent(PantallaMeditacion.this,Init.class);
                 home.putExtra("usuario",usuario);
@@ -310,12 +642,52 @@ public class PantallaMeditacion extends AppCompatActivity implements NavigationV
                 break;
 
             case R.id.nav_dias_meditacion:
-                Intent dias = new Intent(PantallaMeditacion.this, Probando.class);
+                Intent dias = new Intent(PantallaMeditacion.this,HistorialMeditacionActivity.class);
                 dias.putExtra("usuario",usuario);
                 dias.putExtra("nombre",nombre);
                 dias.putExtra("clave",clave);
                 dias.putExtra("email",correo);
                 startActivity(dias);
+                break;
+            case R.id.nav_dias_ejercicio:
+                Intent diasEjer = new Intent(PantallaMeditacion.this,HistorialEjercicioActivity.class);
+                diasEjer.putExtra("usuario",usuario);
+                diasEjer.putExtra("nombre",nombre);
+                diasEjer.putExtra("clave",clave);
+                diasEjer.putExtra("email",correo);
+                startActivity(diasEjer);
+                break;
+            case R.id.nav_dias_yoga:
+                Intent diasYog = new Intent(PantallaMeditacion.this,HistorialYogaActivity.class);
+                diasYog.putExtra("usuario",usuario);
+                diasYog.putExtra("nombre",nombre);
+                diasYog.putExtra("clave",clave);
+                diasYog.putExtra("email",correo);
+                startActivity(diasYog);
+                break;
+            case R.id.nav_mis_rutinas:
+                Intent misRutinas = new Intent(PantallaMeditacion.this,Rutinas.class);
+                misRutinas.putExtra("usuario",usuario);
+                misRutinas.putExtra("nombre",nombre);
+                misRutinas.putExtra("clave",clave);
+                misRutinas.putExtra("email",correo);
+                startActivity(misRutinas);
+                break;
+            case R.id.nav_peso_y_medidas:
+                Intent misMedidas = new Intent(PantallaMeditacion.this,Probando.class);
+                misMedidas.putExtra("usuario",usuario);
+                misMedidas.putExtra("nombre",nombre);
+                misMedidas.putExtra("clave",clave);
+                misMedidas.putExtra("email",correo);
+                startActivity(misMedidas);
+                break;
+            case R.id.nav_recordatorio:
+                Intent recordatorio = new Intent(PantallaMeditacion.this,MyDoes.class);
+                recordatorio.putExtra("usuario",usuario);
+                recordatorio.putExtra("nombre",nombre);
+                recordatorio.putExtra("clave",clave);
+                recordatorio.putExtra("email",correo);
+                startActivity(recordatorio);
                 break;
 
             case R.id.nav_logout:

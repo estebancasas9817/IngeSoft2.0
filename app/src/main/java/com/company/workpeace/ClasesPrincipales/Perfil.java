@@ -15,6 +15,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+// CLASE QUE PERMITE AL USUARIO VISUALIZAR Y ACTUALIZAR LOS DATOS DE USUARIO.
+
 public class Perfil extends AppCompatActivity {
     TextInputLayout fullName, email,password;
     TextView fullNameLabel, usernameLabel;
